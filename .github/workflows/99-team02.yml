@@ -4,14 +4,14 @@ env:
   GH_TOKEN: ${{ github.token }}
   ASSIGNMENT: team02
   PREV_ASSIGNMENT: team01
-  ASN_LINK: https://ucsb-cs156.github.io/f24/lab/team02
-  STARTER_REPO: "ucsb-cs156-f24/STARTER-team02"
+  ASN_LINK: https://ucsb-cs156.github.io/s25/lab/team02
+  STARTER_REPO: "ucsb-cs156-s25/STARTER-team02"
   FRONTEND_URL: "{ \"UCSBDiningCommonsMenuItem\": \"diningcommonsmenuitem\", \"UCSBOrganization\": \"ucsborganization\", \"RecommendationRequest\": \"recommendationrequest\", \"MenuItemReview\": \"menuitemreview\", \"HelpRequest\": \"helprequest\", \"Articles\": \"articles\" }"
   FIXTURES: "{ \"UCSBDiningCommonsMenuItem\": \"ucsbDiningCommonsMenuItem\", \"UCSBOrganization\": \"ucsbOrganization\", \"RecommendationRequest\": \"recommendationRequest\", \"MenuItemReview\": \"menuItemReview\", \"HelpRequest\": \"helpRequest\", \"Articles\": \"articles\" }"
   LABEL_COLOR: "{ \"UCSBDiningCommonsMenuItem\": \"ff0000\", \"UCSBOrganization\": \"00ff00\", \"RecommendationRequest\": \"0000ff\", \"MenuItemReview\": \"ff00ff\", \"HelpRequest\": \"ffff00\", \"Articles\": \"00ffff\" }"
   REPO_FILE: https://github.com/${{github.repository}}/blob/main
-  NVM_USE: "`nvm use 20.17.0`"
-  SAMPLE_TEAM: f24-05
+  NVM_USE: "`nvm use 22.14.0`"
+  SAMPLE_TEAM: s25-05
 on:
   workflow_dispatch:
 jobs:
