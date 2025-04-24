@@ -5,8 +5,8 @@ name: "82-kanban-slack-update.yml"
 
 on:
   schedule:
-    - cron: "0 0,4 * * 2-4"  # 0,4 UTC are 4pm, 8pm Pacific Time on T W R
-    - cron: "0 0 * * 1,5,6,0" # runs at 4pm on M F SS
+    - cron: "0 0,4 * * 3-5"  # 0,4 UTC are 4pm, 8pm Pacific Standard Time on T W R
+    - cron: "0 0 * * 1,2,6,0" # runs at 4pm on M F SS
   workflow_dispatch:  # Allows manual triggering
 
 env:
