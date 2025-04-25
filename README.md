@@ -18,7 +18,7 @@ TODO: Fill in this table with correct information.
 | UCSBDiningCommonsMenuItem |              |           |
 | UCSBOrganization          |              |           |
 | RecommendationRequest     |              |           |
-| MenuItemReview            |              |           |
+| MenuItemReview            |   Tyler W.   |  Tyler W. |
 | HelpRequest               |              |           |
 | Articles                  |              |           |
 
