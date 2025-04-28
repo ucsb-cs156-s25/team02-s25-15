@@ -330,7 +330,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [initialize]
     env:
-      destination: prs/${{ matrix.value.number }}/chromatic
+      destination: chromatic_static_${{ matrix.value.number }}
     if: ${{ needs.initialize.outputs.pull_requests != '[]' && needs.initialize.outputs.pull_requests != '' }}
     strategy:
       matrix:
