@@ -1,7 +1,6 @@
 package edu.ucsb.cs156.example.controllers;
 
 import edu.ucsb.cs156.example.entities.Articles;
-import edu.ucsb.cs156.example.entities.UCSBDate;
 import edu.ucsb.cs156.example.errors.EntityNotFoundException;
 import edu.ucsb.cs156.example.repositories.ArticlesRepository;
 
@@ -55,6 +54,23 @@ public class ArticlesController extends ApiController {
     }
 
     /**
+     * Get a single articles by id
+     * 
+     * @param id the id of the articles instance
+     * @return a articles instance
+     */
+    @Operation(summary= "Get a single articles instance")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("")
+    public Articles getById(
+            @Parameter(name="id") @RequestParam Long id) {
+        Articles articles = articlesRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(Articles.class, id));
+
+        return articles;
+    }
+
+    /**
      * Create a new articles entry
      * 
      * @param title         title of the article
@@ -90,5 +106,51 @@ public class ArticlesController extends ApiController {
         Articles savedArticles = articlesRepository.save(articles);
 
         return savedArticles;
+    }
+
+    /**
+     * Delete an Articles entry
+     * 
+     * @param id the id of the articles entry to delete
+     * @return a message indicating the articles entry was deleted
+     */
+    @Operation(summary= "Delete a Articles entry")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("")
+    public Object deleteArticles(
+            @Parameter(name="id") @RequestParam Long id) {
+        Articles articles = articlesRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(Articles.class, id));
+
+        articlesRepository.delete(articles);
+        return genericMessage("Articles with id %s deleted".formatted(id));
+    }
+
+    /**
+     * Update a single date
+     * 
+     * @param id       id of the date to update
+     * @param incoming the new articles entry
+     * @return the updated articles object
+     */
+    @Operation(summary= "Update a single articles entry")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PutMapping("")
+    public Articles updateArticles(
+            @Parameter(name="id") @RequestParam Long id,
+            @RequestBody @Valid Articles incoming) {
+
+        Articles articles = articlesRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(Articles.class, id));
+
+        articles.setTitle(incoming.getTitle());
+        articles.setUrl(incoming.getUrl());
+        articles.setExplanation(incoming.getExplanation());
+        articles.setEmail(incoming.getEmail());
+        articles.setDateAdded(incoming.getDateAdded());
+
+        articlesRepository.save(articles);
+
+        return articles;
     }
 }
