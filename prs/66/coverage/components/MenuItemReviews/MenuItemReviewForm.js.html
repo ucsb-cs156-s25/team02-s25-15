@@ -32,7 +32,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
@@ -203,17 +203,7 @@
 <a name='L138'></a><a href='#L138'>138</a>
 <a name='L139'></a><a href='#L139'>139</a>
 <a name='L140'></a><a href='#L140'>140</a>
-<a name='L141'></a><a href='#L141'>141</a>
-<a name='L142'></a><a href='#L142'>142</a>
-<a name='L143'></a><a href='#L143'>143</a>
-<a name='L144'></a><a href='#L144'>144</a>
-<a name='L145'></a><a href='#L145'>145</a>
-<a name='L146'></a><a href='#L146'>146</a>
-<a name='L147'></a><a href='#L147'>147</a>
-<a name='L148'></a><a href='#L148'>148</a>
-<a name='L149'></a><a href='#L149'>149</a>
-<a name='L150'></a><a href='#L150'>150</a>
-<a name='L151'></a><a href='#L151'>151</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L141'></a><a href='#L141'>141</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -223,11 +213,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -250,11 +235,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -372,12 +352,7 @@ function MenuItemReviewForm({
   submitAction,
   buttonLabel = "Create",
 }) {
-  const defaultValues = initialContents
-    ? {
-        ...initialContents,
-        dateReviewed: initialContents.dateReviewed,
-      }
-    : {};
+  const defaultValues = initialContents;
 &nbsp;
   // Stryker disable all
   const {
@@ -418,7 +393,6 @@ function MenuItemReviewForm({
       &lt;Form.Group className="mb-3"&gt;
         &lt;Form.Label htmlFor="itemId"&gt;ItemId&lt;/Form.Label&gt;
         &lt;Form.Control
-          data-testid={testIdPrefix + "-itemId"}
           id="itemId"
           type="number"
           isInvalid={Boolean(errors.name)}
@@ -434,7 +408,6 @@ function MenuItemReviewForm({
       &lt;Form.Group className="mb-3"&gt;
         &lt;Form.Label htmlFor="reviewerEmail"&gt;Reviewer Email&lt;/Form.Label&gt;
         &lt;Form.Control
-          data-testid={testIdPrefix + "-reviewerEmail"}
           id="reviewerEmail"
           type="text"
           isInvalid={Boolean(errors.description)}
@@ -450,7 +423,6 @@ function MenuItemReviewForm({
       &lt;Form.Group className="mb-3"&gt;
         &lt;Form.Label htmlFor="stars"&gt;Stars&lt;/Form.Label&gt;
         &lt;Form.Control
-          data-testid={testIdPrefix + "-stars"}
           id="stars"
           type="number"
           isInvalid={Boolean(errors.description)}
@@ -471,7 +443,6 @@ function MenuItemReviewForm({
           data-testid={testIdPrefix + "-dateReviewed"}
           id="dateReviewed"
           type="datetime-local"
-          isInvalid={Boolean(errors.dateReviewed)}
           {...register("dateReviewed", {
             required: true,
             pattern: isodate_regex,
@@ -485,7 +456,6 @@ function MenuItemReviewForm({
       &lt;Form.Group className="mb-3"&gt;
         &lt;Form.Label htmlFor="comments"&gt;Comments&lt;/Form.Label&gt;
         &lt;Form.Control
-          data-testid={testIdPrefix + "-comments"}
           id="comments"
           type="text"
           isInvalid={Boolean(errors.description)}
@@ -498,7 +468,7 @@ function MenuItemReviewForm({
         &lt;/Form.Control.Feedback&gt;
       &lt;/Form.Group&gt;
 &nbsp;
-      &lt;Button type="submit" data-testid={testIdPrefix + "-submit"}&gt;
+      &lt;Button type="submit"&gt;
         {buttonLabel}
       &lt;/Button&gt;
       &lt;Button
@@ -520,7 +490,7 @@ export default MenuItemReviewForm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-30T03:34:13.499Z
+                at 2025-04-30T03:57:23.358Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
