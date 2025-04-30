@@ -20,7 +20,7 @@ TODO: Fill in this table with correct information.
 | RecommendationRequest     |              |           |
 | MenuItemReview            |   Tyler W.   |  Tyler W. |
 | HelpRequest               |              |           |
-| Articles                  |              |           |
+| Articles                  |    Bryce I.          |   bryceinouye        |
 
 Remember though, that in spite of these initial  assignments, it is still
 a team project.  Please help other team members to finish their work
