@@ -1,4 +1,3 @@
-articlesFixtures.js;
 const articlesFixtures = {
   oneArticles: {
     id: 1,
