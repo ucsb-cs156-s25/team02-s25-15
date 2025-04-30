@@ -7,12 +7,19 @@ function MenuItemReviewForm({
   submitAction,
   buttonLabel = "Create",
 }) {
+  const defaultValues = initialContents
+    ? {
+        ...initialContents,
+        dateReviewed: initialContents.dateReviewed,
+      }
+    : {};
+
   // Stryker disable all
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm({ defaultValues: initialContents || {} });
+  } = useForm({ defaultValues });
   // Stryker restore all
 
   const navigate = useNavigate();
@@ -44,7 +51,7 @@ function MenuItemReviewForm({
       )}
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="itemId">itemId</Form.Label>
+        <Form.Label htmlFor="itemId">ItemId</Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-itemId"}
           id="itemId"
@@ -60,7 +67,7 @@ function MenuItemReviewForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="reviewerEmail">reviewEmail</Form.Label>
+        <Form.Label htmlFor="reviewerEmail">Reviewer Email</Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-reviewerEmail"}
           id="reviewerEmail"
@@ -92,7 +99,9 @@ function MenuItemReviewForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="dateReviewed">Date Reviewed (iso format)</Form.Label>
+        <Form.Label htmlFor="dateReviewed">
+          Date Reviewed (iso format)
+        </Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-dateReviewed"}
           id="dateReviewed"
