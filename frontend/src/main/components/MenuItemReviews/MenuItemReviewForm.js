@@ -95,7 +95,6 @@ function MenuItemReviewForm({
           Date Reviewed (iso format)
         </Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-dateReviewed"}
           id="dateReviewed"
           type="datetime-local"
           {...register("dateReviewed", {
