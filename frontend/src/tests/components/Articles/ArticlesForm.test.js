@@ -39,15 +39,16 @@ describe("ArticlesForm tests", () => {
       </Router>,
     );
     await screen.findByTestId("ArticlesForm-title");
-    expect(screen.getByTestId("ArticlesForm-url"));
-    expect(screen.getByTestId("ArticlesForm-explanation"));
-    expect(screen.getByTestId("ArticlesForm-email"));
-    expect(screen.getByTestId("ArticlesForm-dateAdded"));
-    
+    expect(screen.getByTestId("ArticlesForm-url")).toBeInTheDocument();
+    expect(screen.getByTestId("ArticlesForm-explanation")).toBeInTheDocument();
+    expect(screen.getByTestId("ArticlesForm-email")).toBeInTheDocument();
+    expect(screen.getByTestId("ArticlesForm-dateAdded")).toBeInTheDocument();
+
     const titleField = screen.getByTestId("ArticlesForm-title");
-    const urlField = screen.getByTestId("ArticlesForm-url");
-    const explanationField = screen.getByTestId("ArticlesForm-explanation");
-    const emailField = screen.getByTestId("ArticlesForm-email");
+    // These fields do not really matter here because they don't have extra checks like format or max length
+    // const urlField = screen.getByTestId("ArticlesForm-url");
+    // const explanationField = screen.getByTestId("ArticlesForm-explanation");
+    // const emailField = screen.getByTestId("ArticlesForm-email");
     const dateAddedField = screen.getByTestId("ArticlesForm-dateAdded");
     const submitButton = screen.getByTestId("ArticlesForm-submit");
 
@@ -55,7 +56,9 @@ describe("ArticlesForm tests", () => {
     fireEvent.change(dateAddedField, { target: { value: "bad-input" } });
     fireEvent.click(submitButton);
 
-    await screen.findByText(/Title is required. Title has max length 255 characters./);
+    await screen.findByText(
+      /Title is required. Title has max length 255 characters./,
+    );
     expect(screen.getByText(/Date Added is required./)).toBeInTheDocument();
   });
 
@@ -86,10 +89,10 @@ describe("ArticlesForm tests", () => {
       </Router>,
     );
     await screen.findByTestId("ArticlesForm-title");
-    expect(screen.getByTestId("ArticlesForm-url"));
-    expect(screen.getByTestId("ArticlesForm-explanation"));
-    expect(screen.getByTestId("ArticlesForm-email"));
-    expect(screen.getByTestId("ArticlesForm-dateAdded"));
+    expect(screen.getByTestId("ArticlesForm-url")).toBeInTheDocument();
+    expect(screen.getByTestId("ArticlesForm-explanation")).toBeInTheDocument();
+    expect(screen.getByTestId("ArticlesForm-email")).toBeInTheDocument();
+    expect(screen.getByTestId("ArticlesForm-dateAdded")).toBeInTheDocument();
 
     const titleField = screen.getByTestId("ArticlesForm-title");
     const urlField = screen.getByTestId("ArticlesForm-url");
@@ -100,8 +103,12 @@ describe("ArticlesForm tests", () => {
 
     fireEvent.change(titleField, { target: { value: "Awesome Title" } });
     fireEvent.change(urlField, { target: { value: "awesome-article.com" } });
-    fireEvent.change(explanationField, { target: { value: "Awesome things and such" } });
-    fireEvent.change(emailField, { target: { value: "awesome-email@ucsb.edu" } });
+    fireEvent.change(explanationField, {
+      target: { value: "Awesome things and such" },
+    });
+    fireEvent.change(emailField, {
+      target: { value: "awesome-email@ucsb.edu" },
+    });
     fireEvent.change(dateAddedField, {
       target: { value: "2025-04-29T12:12" },
     });
@@ -109,21 +116,15 @@ describe("ArticlesForm tests", () => {
 
     await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
 
+    expect(screen.queryByText(/Title is required./)).not.toBeInTheDocument();
+    expect(screen.queryByText(/URL is required./)).not.toBeInTheDocument();
     expect(
-      screen.queryByText(/Title is required./),
+      screen.queryByText(/Explanation is required./),
     ).not.toBeInTheDocument();
+    expect(screen.queryByText(/Email is required./)).not.toBeInTheDocument();
     expect(
-      screen.queryByText(/URL is required./),
+      screen.queryByText(/Date Added is required./),
     ).not.toBeInTheDocument();
-    expect(
-        screen.queryByText(/Explanation is required./),
-      ).not.toBeInTheDocument();
-      expect(
-        screen.queryByText(/Email is required./),
-      ).not.toBeInTheDocument();
-      expect(
-        screen.queryByText(/Date Added is required./),
-      ).not.toBeInTheDocument();
   });
 
   test("that navigate(-1) is called when Cancel is clicked", async () => {
