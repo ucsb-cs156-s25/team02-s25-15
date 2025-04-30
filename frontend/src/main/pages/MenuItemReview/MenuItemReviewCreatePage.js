@@ -13,13 +13,13 @@ export default function MenuItemReviewCreatePage({ storybook = false }) {
       reviewerEmail: menuItemReview.reviewerEmail,
       stars: menuItemReview.stars,
       dateReviewed: menuItemReview.dateReviewed,
-      comments: menuItemReview.comments
+      comments: menuItemReview.comments,
     },
   });
 
   const onSuccess = (menuItemReview) => {
     toast(
-      `New MenuItemReview Created - id: ${menuItemReview.id} name: ${menuItemReview.itemId}`,
+      `New MenuItemReview Created - id: ${menuItemReview.id} itemId: ${menuItemReview.itemId}`,
     );
   };
 
