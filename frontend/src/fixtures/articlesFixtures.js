@@ -1,5 +1,5 @@
 const articlesFixtures = {
-  oneArticle: {
+  oneArticles: {
     id: 1,
     title: "Patch 25.09 Notes",
     url: "https://www.leagueoflegends.com/en-us/news/game-updates/patch-25-09-notes/",
