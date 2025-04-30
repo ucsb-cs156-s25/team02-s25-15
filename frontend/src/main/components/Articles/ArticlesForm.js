@@ -115,18 +115,18 @@ function ArticlesForm({
       <Row>
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="name">Email</Form.Label>
+            <Form.Label htmlFor="email">Email</Form.Label>
             <Form.Control
-              data-testid="ArticlesForm-name"
-              id="name"
+              data-testid="ArticlesForm-email"
+              id="email"
               type="text"
-              isInvalid={Boolean(errors.name)}
-              {...register("name", {
-                required: "Name is required.",
+              isInvalid={Boolean(errors.email)}
+              {...register("email", {
+                required: "Email is required.",
               })}
             />
             <Form.Control.Feedback type="invalid">
-              {errors.name?.message}
+              {errors.email?.message}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
