@@ -21,6 +21,7 @@ describe("MenuItemReviewTable tests", () => {
   const queryClient = new QueryClient();
 
   const expectedHeaders = [
+    "id",
     "ItemId",
     "Reviewer Email",
     "Stars",
