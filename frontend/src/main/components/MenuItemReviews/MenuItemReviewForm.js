@@ -7,12 +7,7 @@ function MenuItemReviewForm({
   submitAction,
   buttonLabel = "Create",
 }) {
-  const defaultValues = initialContents
-    ? {
-        ...initialContents,
-        dateReviewed: initialContents.dateReviewed,
-      }
-    : {};
+  const defaultValues = initialContents;
 
   // Stryker disable all
   const {
@@ -53,7 +48,6 @@ function MenuItemReviewForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="itemId">ItemId</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-itemId"}
           id="itemId"
           type="number"
           isInvalid={Boolean(errors.name)}
@@ -69,7 +63,6 @@ function MenuItemReviewForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="reviewerEmail">Reviewer Email</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-reviewerEmail"}
           id="reviewerEmail"
           type="text"
           isInvalid={Boolean(errors.description)}
@@ -85,7 +78,6 @@ function MenuItemReviewForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="stars">Stars</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-stars"}
           id="stars"
           type="number"
           isInvalid={Boolean(errors.description)}
@@ -106,7 +98,6 @@ function MenuItemReviewForm({
           data-testid={testIdPrefix + "-dateReviewed"}
           id="dateReviewed"
           type="datetime-local"
-          isInvalid={Boolean(errors.dateReviewed)}
           {...register("dateReviewed", {
             required: true,
             pattern: isodate_regex,
@@ -120,7 +111,6 @@ function MenuItemReviewForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="comments">Comments</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-comments"}
           id="comments"
           type="text"
           isInvalid={Boolean(errors.description)}
@@ -133,7 +123,7 @@ function MenuItemReviewForm({
         </Form.Control.Feedback>
       </Form.Group>
 
-      <Button type="submit" data-testid={testIdPrefix + "-submit"}>
+      <Button type="submit">
         {buttonLabel}
       </Button>
       <Button
