@@ -181,11 +181,11 @@ describe("MenuItemReviewTable tests", () => {
 
     // assert - check that the expected content is rendered
     expect(
-        await screen.findByTestId(`${testId}-cell-row-0-col-id`),
-      ).toHaveTextContent(2);
-      expect(
-        screen.getByTestId(`${testId}-cell-row-0-col-itemId`),
-      ).toHaveTextContent(1);
+      await screen.findByTestId(`${testId}-cell-row-0-col-id`),
+    ).toHaveTextContent(2);
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-itemId`),
+    ).toHaveTextContent(1);
 
     const editButton = screen.getByTestId(
       `${testId}-cell-row-0-col-Edit-button`,
@@ -224,11 +224,11 @@ describe("MenuItemReviewTable tests", () => {
 
     // assert - check that the expected content is rendered
     expect(
-        await screen.findByTestId(`${testId}-cell-row-0-col-id`),
-      ).toHaveTextContent(2);
-      expect(
-        screen.getByTestId(`${testId}-cell-row-0-col-itemId`),
-      ).toHaveTextContent(1);
+      await screen.findByTestId(`${testId}-cell-row-0-col-id`),
+    ).toHaveTextContent(2);
+    expect(
+      screen.getByTestId(`${testId}-cell-row-0-col-itemId`),
+    ).toHaveTextContent(1);
 
     const deleteButton = screen.getByTestId(
       `${testId}-cell-row-0-col-Delete-button`,
