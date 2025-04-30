@@ -65,8 +65,8 @@ function ArticlesForm({
             />
             <Form.Control.Feedback type="invalid">
               {errors.title && "Title is required. "}
-              {errors.title?.type === "pattern" &&
-                "Title has max length 255 characters"}{" "}
+              {errors.title?.type === "maxLength" &&
+                "Title has max length 255 characters."}{" "}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
