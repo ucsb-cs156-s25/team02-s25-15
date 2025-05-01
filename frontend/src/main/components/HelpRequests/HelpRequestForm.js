@@ -98,10 +98,7 @@ function HelpRequestForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="requestTime">
-          {" "}
-          Request Time (iso format)
-        </Form.Label>
+        <Form.Label htmlFor="requestTime">requestTime</Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-requestTime"}
           id="requestTime"
