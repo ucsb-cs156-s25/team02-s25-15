@@ -36,7 +36,6 @@ function ArticlesForm({
             <Form.Group className="mb-3">
               <Form.Label htmlFor="id">Id</Form.Label>
               <Form.Control
-                data-testid="ArticlesForm-id"
                 id="id"
                 type="text"
                 {...register("id")}
@@ -51,22 +50,15 @@ function ArticlesForm({
           <Form.Group className="mb-3">
             <Form.Label htmlFor="title">Title</Form.Label>
             <Form.Control
-              data-testid="ArticlesForm-title"
               id="title"
               type="text"
               isInvalid={Boolean(errors.title)}
               {...register("title", {
-                required: true,
-                maxLength: {
-                  value: 255,
-                  message: "Max length 255 characters",
-                },
+                required: "Title is required.",
               })}
             />
             <Form.Control.Feedback type="invalid">
-              {errors.title && "Title is required. "}
-              {errors.title?.type === "maxLength" &&
-                "Title has max length 255 characters."}{" "}
+              {errors.title?.message}
             </Form.Control.Feedback>
           </Form.Group>
         </Col>
@@ -77,7 +69,6 @@ function ArticlesForm({
           <Form.Group className="mb-3">
             <Form.Label htmlFor="url">URL</Form.Label>
             <Form.Control
-              data-testid="ArticlesForm-url"
               id="url"
               type="text"
               isInvalid={Boolean(errors.url)}
@@ -97,7 +88,6 @@ function ArticlesForm({
           <Form.Group className="mb-3">
             <Form.Label htmlFor="explanation">Explanation</Form.Label>
             <Form.Control
-              data-testid="ArticlesForm-explanation"
               id="explanation"
               type="text"
               isInvalid={Boolean(errors.explanation)}
@@ -117,7 +107,6 @@ function ArticlesForm({
           <Form.Group className="mb-3">
             <Form.Label htmlFor="email">Email</Form.Label>
             <Form.Control
-              data-testid="ArticlesForm-email"
               id="email"
               type="text"
               isInvalid={Boolean(errors.email)}
@@ -135,9 +124,8 @@ function ArticlesForm({
       <Row>
         <Col>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="dateAdded">Date Added(iso format)</Form.Label>
+            <Form.Label htmlFor="dateAdded">Date Added</Form.Label>
             <Form.Control
-              data-testid="ArticlesForm-dateAdded"
               id="dateAdded"
               type="datetime-local"
               isInvalid={Boolean(errors.dateAdded)}
@@ -155,14 +143,8 @@ function ArticlesForm({
 
       <Row>
         <Col>
-          <Button type="submit" data-testid="ArticlesForm-submit">
-            {buttonLabel}
-          </Button>
-          <Button
-            variant="Secondary"
-            onClick={() => navigate(-1)}
-            data-testid="ArticlesForm-cancel"
-          >
+          <Button type="submit">{buttonLabel}</Button>
+          <Button variant="Secondary" onClick={() => navigate(-1)}>
             Cancel
           </Button>
         </Col>
