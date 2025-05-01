@@ -117,6 +117,38 @@ function HelpRequestForm({
         </Form.Control.Feedback>
       </Form.Group>
 
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="explanation">explanation</Form.Label>
+        <Form.Control
+          data-testid={testIdPrefix + "-explanation"}
+          id="explanation"
+          type="text"
+          isInvalid={Boolean(errors.explanation)}
+          {...register("explanation", {
+            required: "explanation is required.",
+          })}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.explanation?.message}
+        </Form.Control.Feedback>
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="solved">solved</Form.Label>
+        <Form.Control
+          data-testid={testIdPrefix + "-solved"}
+          id="solved"
+          type="boolean"
+          isInvalid={Boolean(errors.solved)}
+          {...register("solved", {
+            required: "solved is required.",
+          })}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.solved?.message}
+        </Form.Control.Feedback>
+      </Form.Group>
+
       <Button type="submit" data-testid={testIdPrefix + "-submit"}>
         {buttonLabel}
       </Button>
