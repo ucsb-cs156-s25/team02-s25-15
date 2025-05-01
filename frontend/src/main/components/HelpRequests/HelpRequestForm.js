@@ -130,7 +130,7 @@ function HelpRequestForm({
         <Form.Label htmlFor="solved">solved</Form.Label>
         <Form.Control
           id="solved"
-          type="boolean"
+          type="text"
           isInvalid={Boolean(errors.solved)}
           {...register("solved", {
             required: "solved is required.",
