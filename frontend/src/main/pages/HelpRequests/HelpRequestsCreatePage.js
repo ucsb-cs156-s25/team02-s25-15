@@ -14,8 +14,7 @@ export default function HelpRequestsCreatePage({ storybook = false }) {
       tableOrBreakoutRoom: helpRequest.tableOrBreakoutRoom,
       explanation: helpRequest.explanation,
       solved: helpRequest.solved,
-      requestTime: helpRequest.requestTime
-
+      requestTime: helpRequest.requestTime,
     },
   });
 
