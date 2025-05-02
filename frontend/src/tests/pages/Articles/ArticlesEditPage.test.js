@@ -82,21 +82,21 @@ describe("ArticlesEditPage tests", () => {
         .reply(200, systemInfoFixtures.showingNeither);
       axiosMock.onGet("/api/articles", { params: { id: 17 } }).reply(200, {
         id: 21,
-      title: "Patch 25.09 Notes",
-      url: "https://www.leagueoflegends.com/en-us/news/game-updates/patch-25-09-notes/",
-      explanation:
-        "Welcome to Season 2 where we go to Ionia just in time for the Spirit Blossom Festival! We’ve got lots to celebrate this patch, so make sure to read the full patch notes for all the details!",
-      email: "riotgames@ucsb.edu",
-      dateAdded: "2025-04-29T12:42:00",
+        title: "Patch 25.09 Notes",
+        url: "https://www.leagueoflegends.com/en-us/news/game-updates/patch-25-09-notes/",
+        explanation:
+          "Welcome to Season 2 where we go to Ionia just in time for the Spirit Blossom Festival! We’ve got lots to celebrate this patch, so make sure to read the full patch notes for all the details!",
+        email: "riotgames@ucsb.edu",
+        dateAdded: "2025-04-29T12:42:00",
       });
       axiosMock.onPut("/api/articles").reply(200, {
         id: 21,
-      title: "RELEASE NOTES: THE BATTLE FOR KATANA KINGDOM!",
-      url: "https://supercell.com/en/games/brawlstars/blog/release-notes/release-notes-the-battle-for-katana-kingdom/",
-      explanation:
-        "The First Ultra Legendary Brawler Kaze, a Brawl MOBA, Wasabi Powers, Jae-yong the Karaoke King, and More!",
-      email: "brawlstars@ucsb.edu",
-      dateAdded: "2025-04-25T11:11:11",
+        title: "RELEASE NOTES: THE BATTLE FOR KATANA KINGDOM!",
+        url: "https://supercell.com/en/games/brawlstars/blog/release-notes/release-notes-the-battle-for-katana-kingdom/",
+        explanation:
+          "The First Ultra Legendary Brawler Kaze, a Brawl MOBA, Wasabi Powers, Jae-yong the Karaoke King, and More!",
+        email: "brawlstars@ucsb.edu",
+        dateAdded: "2025-04-25T11:11:11",
       });
     });
 
@@ -127,9 +127,13 @@ describe("ArticlesEditPage tests", () => {
       expect(titleField).toBeInTheDocument();
       expect(titleField).toHaveValue("Patch 25.09 Notes");
       expect(urlField).toBeInTheDocument();
-      expect(urlField).toHaveValue("https://www.leagueoflegends.com/en-us/news/game-updates/patch-25-09-notes/");
+      expect(urlField).toHaveValue(
+        "https://www.leagueoflegends.com/en-us/news/game-updates/patch-25-09-notes/",
+      );
       expect(explanationField).toBeInTheDocument();
-      expect(explanationField).toHaveValue("Welcome to Season 2 where we go to Ionia just in time for the Spirit Blossom Festival! We’ve got lots to celebrate this patch, so make sure to read the full patch notes for all the details!");
+      expect(explanationField).toHaveValue(
+        "Welcome to Season 2 where we go to Ionia just in time for the Spirit Blossom Festival! We’ve got lots to celebrate this patch, so make sure to read the full patch notes for all the details!",
+      );
       expect(emailField).toBeInTheDocument();
       expect(emailField).toHaveValue("riotgames@ucsb.edu");
       expect(dateAddedField).toBeInTheDocument();
@@ -141,10 +145,16 @@ describe("ArticlesEditPage tests", () => {
         target: { value: "RELEASE NOTES: THE BATTLE FOR KATANA KINGDOM!" },
       });
       fireEvent.change(urlField, {
-        target: { value: "https://supercell.com/en/games/brawlstars/blog/release-notes/release-notes-the-battle-for-katana-kingdom/" },
+        target: {
+          value:
+            "https://supercell.com/en/games/brawlstars/blog/release-notes/release-notes-the-battle-for-katana-kingdom/",
+        },
       });
       fireEvent.change(explanationField, {
-        target: { value: "The First Ultra Legendary Brawler Kaze, a Brawl MOBA, Wasabi Powers, Jae-yong the Karaoke King, and More!" },
+        target: {
+          value:
+            "The First Ultra Legendary Brawler Kaze, a Brawl MOBA, Wasabi Powers, Jae-yong the Karaoke King, and More!",
+        },
       });
       fireEvent.change(emailField, {
         target: { value: "brawlstars@ucsb.edu" },
@@ -167,7 +177,8 @@ describe("ArticlesEditPage tests", () => {
         JSON.stringify({
           title: "RELEASE NOTES: THE BATTLE FOR KATANA KINGDOM!",
           url: "https://supercell.com/en/games/brawlstars/blog/release-notes/release-notes-the-battle-for-katana-kingdom/",
-          explanation: "The First Ultra Legendary Brawler Kaze, a Brawl MOBA, Wasabi Powers, Jae-yong the Karaoke King, and More!",
+          explanation:
+            "The First Ultra Legendary Brawler Kaze, a Brawl MOBA, Wasabi Powers, Jae-yong the Karaoke King, and More!",
           email: "brawlstars@ucsb.edu",
           dateAdded: "2025-04-25T11:11:11.111",
         }),
@@ -195,21 +206,31 @@ describe("ArticlesEditPage tests", () => {
 
       expect(idField).toHaveValue("21");
       expect(titleField).toHaveValue("Patch 25.09 Notes");
-      expect(urlField).toHaveValue("https://www.leagueoflegends.com/en-us/news/game-updates/patch-25-09-notes/");
-      expect(explanationField).toHaveValue("Welcome to Season 2 where we go to Ionia just in time for the Spirit Blossom Festival! We’ve got lots to celebrate this patch, so make sure to read the full patch notes for all the details!");
+      expect(urlField).toHaveValue(
+        "https://www.leagueoflegends.com/en-us/news/game-updates/patch-25-09-notes/",
+      );
+      expect(explanationField).toHaveValue(
+        "Welcome to Season 2 where we go to Ionia just in time for the Spirit Blossom Festival! We’ve got lots to celebrate this patch, so make sure to read the full patch notes for all the details!",
+      );
       expect(emailField).toHaveValue("riotgames@ucsb.edu");
       expect(dateAddedField).toHaveValue("2025-04-29T12:42");
-      
+
       expect(submitButton).toBeInTheDocument();
 
       fireEvent.change(titleField, {
         target: { value: "RELEASE NOTES: THE BATTLE FOR KATANA KINGDOM!" },
       });
       fireEvent.change(urlField, {
-        target: { value: "https://supercell.com/en/games/brawlstars/blog/release-notes/release-notes-the-battle-for-katana-kingdom/" },
+        target: {
+          value:
+            "https://supercell.com/en/games/brawlstars/blog/release-notes/release-notes-the-battle-for-katana-kingdom/",
+        },
       });
       fireEvent.change(explanationField, {
-        target: { value: "The First Ultra Legendary Brawler Kaze, a Brawl MOBA, Wasabi Powers, Jae-yong the Karaoke King, and More!" },
+        target: {
+          value:
+            "The First Ultra Legendary Brawler Kaze, a Brawl MOBA, Wasabi Powers, Jae-yong the Karaoke King, and More!",
+        },
       });
       fireEvent.change(emailField, {
         target: { value: "brawlstars@ucsb.edu" },
