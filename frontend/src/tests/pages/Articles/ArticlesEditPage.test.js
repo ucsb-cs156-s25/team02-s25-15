@@ -1,7 +1,7 @@
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
-import RestaurantEditPage from "main/pages/Restaurants/RestaurantEditPage";
+import ArticlesEditPage from "main/pages/Articles/ArticlesEditPage";
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
@@ -35,7 +35,7 @@ jest.mock("react-router-dom", () => {
   };
 });
 
-describe("RestaurantEditPage tests", () => {
+describe("ArticlesEditPage tests", () => {
   describe("when the backend doesn't return data", () => {
     const axiosMock = new AxiosMockAdapter(axios);
 
@@ -48,22 +48,22 @@ describe("RestaurantEditPage tests", () => {
       axiosMock
         .onGet("/api/systemInfo")
         .reply(200, systemInfoFixtures.showingNeither);
-      axiosMock.onGet("/api/restaurants", { params: { id: 17 } }).timeout();
+      axiosMock.onGet("/api/articles", { params: { id: 17 } }).timeout();
     });
 
     const queryClient = new QueryClient();
-    test("renders header but table is not present", async () => {
+    test("renders header but form is not present", async () => {
       const restoreConsole = mockConsole();
 
       render(
         <QueryClientProvider client={queryClient}>
           <MemoryRouter>
-            <RestaurantEditPage />
+            <ArticlesEditPage />
           </MemoryRouter>
         </QueryClientProvider>,
       );
-      await screen.findByText("Edit Restaurant");
-      expect(screen.queryByTestId("Restaurant-name")).not.toBeInTheDocument();
+      await screen.findByText("Edit Article");
+      expect(screen.queryByText(/Title/)).not.toBeInTheDocument();
       restoreConsole();
     });
   });
@@ -80,15 +80,23 @@ describe("RestaurantEditPage tests", () => {
       axiosMock
         .onGet("/api/systemInfo")
         .reply(200, systemInfoFixtures.showingNeither);
-      axiosMock.onGet("/api/restaurants", { params: { id: 17 } }).reply(200, {
-        id: 17,
-        name: "Freebirds",
-        description: "Burritos",
+      axiosMock.onGet("/api/articles", { params: { id: 17 } }).reply(200, {
+        id: 21,
+      title: "Patch 25.09 Notes",
+      url: "https://www.leagueoflegends.com/en-us/news/game-updates/patch-25-09-notes/",
+      explanation:
+        "Welcome to Season 2 where we go to Ionia just in time for the Spirit Blossom Festival! We’ve got lots to celebrate this patch, so make sure to read the full patch notes for all the details!",
+      email: "riotgames@ucsb.edu",
+      dateAdded: "2025-04-29T12:42:00",
       });
-      axiosMock.onPut("/api/restaurants").reply(200, {
-        id: "17",
-        name: "Freebirds World Burrito",
-        description: "Really big Burritos",
+      axiosMock.onPut("/api/articles").reply(200, {
+        id: 21,
+      title: "RELEASE NOTES: THE BATTLE FOR KATANA KINGDOM!",
+      url: "https://supercell.com/en/games/brawlstars/blog/release-notes/release-notes-the-battle-for-katana-kingdom/",
+      explanation:
+        "The First Ultra Legendary Brawler Kaze, a Brawl MOBA, Wasabi Powers, Jae-yong the Karaoke King, and More!",
+      email: "brawlstars@ucsb.edu",
+      dateAdded: "2025-04-25T11:11:11",
       });
     });
 
@@ -98,48 +106,70 @@ describe("RestaurantEditPage tests", () => {
       render(
         <QueryClientProvider client={queryClient}>
           <MemoryRouter>
-            <RestaurantEditPage />
+            <ArticlesEditPage />
           </MemoryRouter>
         </QueryClientProvider>,
       );
 
-      await screen.findByTestId("RestaurantForm-id");
+      await screen.findByText(/Id/);
 
-      const idField = screen.getByTestId("RestaurantForm-id");
-      const nameField = screen.getByTestId("RestaurantForm-name");
-      const descriptionField = screen.getByTestId("RestaurantForm-description");
-      const submitButton = screen.getByTestId("RestaurantForm-submit");
+      const idField = screen.getByLabelText(/Id/);
+      const titleField = screen.getByLabelText(/Title/);
+      const urlField = screen.getByLabelText(/URL/);
+      const explanationField = screen.getByLabelText(/Explanation/);
+      const emailField = screen.getByLabelText(/Email/);
+      const dateAddedField = screen.getByLabelText(/Date Added/);
+      const submitButton = screen.getByText(/Update/);
 
       expect(idField).toBeInTheDocument();
-      expect(idField).toHaveValue("17");
-      expect(nameField).toBeInTheDocument();
-      expect(nameField).toHaveValue("Freebirds");
-      expect(descriptionField).toBeInTheDocument();
-      expect(descriptionField).toHaveValue("Burritos");
+      expect(idField).toHaveValue("21");
+
+      expect(titleField).toBeInTheDocument();
+      expect(titleField).toHaveValue("Patch 25.09 Notes");
+      expect(urlField).toBeInTheDocument();
+      expect(urlField).toHaveValue("https://www.leagueoflegends.com/en-us/news/game-updates/patch-25-09-notes/");
+      expect(explanationField).toBeInTheDocument();
+      expect(explanationField).toHaveValue("Welcome to Season 2 where we go to Ionia just in time for the Spirit Blossom Festival! We’ve got lots to celebrate this patch, so make sure to read the full patch notes for all the details!");
+      expect(emailField).toBeInTheDocument();
+      expect(emailField).toHaveValue("riotgames@ucsb.edu");
+      expect(dateAddedField).toBeInTheDocument();
+      expect(dateAddedField).toHaveValue("2025-04-29T12:42");
 
       expect(submitButton).toHaveTextContent("Update");
 
-      fireEvent.change(nameField, {
-        target: { value: "Freebirds World Burrito" },
+      fireEvent.change(titleField, {
+        target: { value: "RELEASE NOTES: THE BATTLE FOR KATANA KINGDOM!" },
       });
-      fireEvent.change(descriptionField, {
-        target: { value: "Totally Giant Burritos" },
+      fireEvent.change(urlField, {
+        target: { value: "https://supercell.com/en/games/brawlstars/blog/release-notes/release-notes-the-battle-for-katana-kingdom/" },
+      });
+      fireEvent.change(explanationField, {
+        target: { value: "The First Ultra Legendary Brawler Kaze, a Brawl MOBA, Wasabi Powers, Jae-yong the Karaoke King, and More!" },
+      });
+      fireEvent.change(emailField, {
+        target: { value: "brawlstars@ucsb.edu" },
+      });
+      fireEvent.change(dateAddedField, {
+        target: { value: "2025-04-25T11:11:11.111" },
       });
       fireEvent.click(submitButton);
 
-      await waitFor(() => expect(mockToast).toBeCalled());
-      expect(mockToast).toBeCalledWith(
-        "Restaurant Updated - id: 17 name: Freebirds World Burrito",
+      await waitFor(() => expect(mockToast).toHaveBeenCalled());
+      expect(mockToast).toHaveBeenCalledWith(
+        "Article Updated - id: 21 title: RELEASE NOTES: THE BATTLE FOR KATANA KINGDOM!",
       );
 
-      expect(mockNavigate).toBeCalledWith({ to: "/restaurants" });
+      expect(mockNavigate).toHaveBeenCalledWith({ to: "/articles" });
 
       expect(axiosMock.history.put.length).toBe(1); // times called
-      expect(axiosMock.history.put[0].params).toEqual({ id: 17 });
+      expect(axiosMock.history.put[0].params).toEqual({ id: 21 });
       expect(axiosMock.history.put[0].data).toBe(
         JSON.stringify({
-          name: "Freebirds World Burrito",
-          description: "Totally Giant Burritos",
+          title: "RELEASE NOTES: THE BATTLE FOR KATANA KINGDOM!",
+          url: "https://supercell.com/en/games/brawlstars/blog/release-notes/release-notes-the-battle-for-katana-kingdom/",
+          explanation: "The First Ultra Legendary Brawler Kaze, a Brawl MOBA, Wasabi Powers, Jae-yong the Karaoke King, and More!",
+          email: "brawlstars@ucsb.edu",
+          dateAdded: "2025-04-25T11:11:11.111",
         }),
       ); // posted object
     });
@@ -148,35 +178,53 @@ describe("RestaurantEditPage tests", () => {
       render(
         <QueryClientProvider client={queryClient}>
           <MemoryRouter>
-            <RestaurantEditPage />
+            <ArticlesEditPage />
           </MemoryRouter>
         </QueryClientProvider>,
       );
 
-      await screen.findByTestId("RestaurantForm-id");
+      await screen.findByText(/Id/);
 
-      const idField = screen.getByTestId("RestaurantForm-id");
-      const nameField = screen.getByTestId("RestaurantForm-name");
-      const descriptionField = screen.getByTestId("RestaurantForm-description");
-      const submitButton = screen.getByTestId("RestaurantForm-submit");
+      const idField = screen.getByLabelText(/Id/);
+      const titleField = screen.getByLabelText(/Title/);
+      const urlField = screen.getByLabelText(/URL/);
+      const explanationField = screen.getByLabelText(/Explanation/);
+      const emailField = screen.getByLabelText(/Email/);
+      const dateAddedField = screen.getByLabelText(/Date Added/);
+      const submitButton = screen.getByText(/Update/);
 
-      expect(idField).toHaveValue("17");
-      expect(nameField).toHaveValue("Freebirds");
-      expect(descriptionField).toHaveValue("Burritos");
+      expect(idField).toHaveValue("21");
+      expect(titleField).toHaveValue("Patch 25.09 Notes");
+      expect(urlField).toHaveValue("https://www.leagueoflegends.com/en-us/news/game-updates/patch-25-09-notes/");
+      expect(explanationField).toHaveValue("Welcome to Season 2 where we go to Ionia just in time for the Spirit Blossom Festival! We’ve got lots to celebrate this patch, so make sure to read the full patch notes for all the details!");
+      expect(emailField).toHaveValue("riotgames@ucsb.edu");
+      expect(dateAddedField).toHaveValue("2025-04-29T12:42");
+      
       expect(submitButton).toBeInTheDocument();
 
-      fireEvent.change(nameField, {
-        target: { value: "Freebirds World Burrito" },
+      fireEvent.change(titleField, {
+        target: { value: "RELEASE NOTES: THE BATTLE FOR KATANA KINGDOM!" },
       });
-      fireEvent.change(descriptionField, { target: { value: "Big Burritos" } });
+      fireEvent.change(urlField, {
+        target: { value: "https://supercell.com/en/games/brawlstars/blog/release-notes/release-notes-the-battle-for-katana-kingdom/" },
+      });
+      fireEvent.change(explanationField, {
+        target: { value: "The First Ultra Legendary Brawler Kaze, a Brawl MOBA, Wasabi Powers, Jae-yong the Karaoke King, and More!" },
+      });
+      fireEvent.change(emailField, {
+        target: { value: "brawlstars@ucsb.edu" },
+      });
+      fireEvent.change(dateAddedField, {
+        target: { value: "2025-04-25T11:11:11.111" },
+      });
 
       fireEvent.click(submitButton);
 
-      await waitFor(() => expect(mockToast).toBeCalled());
-      expect(mockToast).toBeCalledWith(
-        "Restaurant Updated - id: 17 name: Freebirds World Burrito",
+      await waitFor(() => expect(mockToast).toHaveBeenCalled());
+      expect(mockToast).toHaveBeenCalledWith(
+        "Article Updated - id: 21 title: RELEASE NOTES: THE BATTLE FOR KATANA KINGDOM!",
       );
-      expect(mockNavigate).toBeCalledWith({ to: "/restaurants" });
+      expect(mockNavigate).toHaveBeenCalledWith({ to: "/articles" });
     });
   });
 });
