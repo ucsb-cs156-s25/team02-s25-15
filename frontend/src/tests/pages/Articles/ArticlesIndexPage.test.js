@@ -64,7 +64,7 @@ describe("ArticlesIndexPage tests", () => {
     await waitFor(() => {
       expect(screen.getByText(/Create Article/)).toBeInTheDocument();
     });
-    const button = screen.getByText(/Create/);
+    const button = screen.getByText(/Create Article/);
     expect(button).toHaveAttribute("href", "/articles/create");
     expect(button).toHaveAttribute("style", "float: right;");
   });
@@ -95,7 +95,7 @@ describe("ArticlesIndexPage tests", () => {
       "3",
     );
 
-    const createArticlesButton = screen.queryByText("Create Articles");
+    const createArticlesButton = screen.queryByText("Create Article");
     expect(createArticlesButton).not.toBeInTheDocument();
 
     const title = screen.getByText(
@@ -103,10 +103,8 @@ describe("ArticlesIndexPage tests", () => {
     );
     expect(title).toBeInTheDocument();
 
-    const explanation = screen.getByText(
-      "The First Ultra Legendary Brawler Kaze, a Brawl MOBA, Wasabi Powers, Jae-yong the Karaoke King, and More!",
-    );
-    expect(explanation).toBeInTheDocument();
+    const email = screen.getByText("brawlstars@ucsb.edu");
+    expect(email).toBeInTheDocument();
 
     // for non-admin users, details button is visible, but the edit and delete buttons should not be visible
     expect(
@@ -179,7 +177,7 @@ describe("ArticlesIndexPage tests", () => {
     fireEvent.click(deleteButton);
 
     await waitFor(() => {
-      expect(mockToast).toBeCalledWith("Article with id 1 was deleted");
+      expect(mockToast).toHaveBeenCalledWith("Article with id 1 was deleted");
     });
 
     await waitFor(() => {
