@@ -2,7 +2,11 @@ import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-function UCSBOrganizationForm({initialContents, submitAction, buttonLabel = "Create"}) {
+function UCSBOrganizationForm({
+  initialContents,
+  submitAction,
+  buttonLabel = "Create",
+}) {
   // Stryker disable all
   const {
     register,
@@ -32,14 +36,20 @@ function UCSBOrganizationForm({initialContents, submitAction, buttonLabel = "Cre
       )}
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="orgtranslationshort">OrgTranslationShort</Form.Label>
+        <Form.Label htmlFor="orgtranslationshort">
+          OrgTranslationShort
+        </Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-orgtranslationshort"}
+          data-testid={testIdPrefix + "-orgTranslationShort"}
           id="orgtranslationshort"
           type="text"
           isInvalid={Boolean(errors.orgTranslationShort)}
           {...register("orgTranslationShort", {
             required: "OrgTranslationShort is required.",
+            maxLength: {
+              value: 30,
+              message: "Max length 30 characters",
+            },
           })}
         />
         <Form.Control.Feedback type="invalid">
@@ -50,7 +60,7 @@ function UCSBOrganizationForm({initialContents, submitAction, buttonLabel = "Cre
       <Form.Group className="mb-3">
         <Form.Label htmlFor="orgtranslation">OrgTranslation</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-orgtranslation"}
+          data-testid={testIdPrefix + "-orgTranslation"}
           id="orgtranslation"
           type="text"
           isInvalid={Boolean(errors.orgTranslation)}
@@ -66,19 +76,19 @@ function UCSBOrganizationForm({initialContents, submitAction, buttonLabel = "Cre
       <Form.Group className="mb-3">
         <Form.Label htmlFor="inactive">Inactive</Form.Label>
         <Form.Select
-            id="inactive"
-            data-testid={testIdPrefix + "-inactive"}
-            isInvalid={Boolean(errors.inactive)}
-            {...register("inactive", {
-                required: "Inactive is required.",
-            })}
+          id="inactive"
+          data-testid={testIdPrefix + "-Inactive"}
+          isInvalid={Boolean(errors.inactive)}
+          {...register("inactive", {
+            required: "Inactive is required.",
+          })}
         >
-            <option value="">Select...</option>
-            <option value="true">True</option>
-            <option value="false">False</option>
+          <option value="">Select...</option>
+          <option value="true">True</option>
+          <option value="false">False</option>
         </Form.Select>
         <Form.Control.Feedback type="invalid">
-            {errors.inactive?.message}
+          {errors.inactive?.message}
         </Form.Control.Feedback>
       </Form.Group>
 
