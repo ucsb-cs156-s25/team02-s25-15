@@ -51,6 +51,7 @@ export default function UCSBOrganizationTable({
     {
       Header: "Inactive",
       accessor: "inactive",
+      Cell: ({ value }) => (value ? "true" : "false"),
     },
   ];
 
