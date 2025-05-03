@@ -49,8 +49,8 @@ export default function UCSBOrganizationTable({
       accessor: "orgTranslation",
     },
     {
-        Header: "Inactive",
-        accessor: "inactive",
+      Header: "Inactive",
+      accessor: "inactive",
     },
   ];
 
@@ -62,6 +62,10 @@ export default function UCSBOrganizationTable({
   }
 
   return (
-    <OurTable data={ucsborganizations} columns={columns} testid={testIdPrefix} />
+    <OurTable
+      data={ucsborganizations}
+      columns={columns}
+      testid={testIdPrefix}
+    />
   );
 }
