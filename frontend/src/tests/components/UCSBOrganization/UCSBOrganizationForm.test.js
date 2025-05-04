@@ -16,7 +16,12 @@ jest.mock("react-router-dom", () => ({
 describe("UCSBOrganizationForm tests", () => {
   const queryClient = new QueryClient();
 
-  const expectedHeaders = ["OrgTranslationShort", "OrgTranslation", "Inactive"];
+  const expectedHeaders = [
+    "OrgCode",
+    "OrgTranslationShort",
+    "OrgTranslation",
+    "Inactive",
+  ];
   const testId = "UCSBOrganizationForm";
 
   test("renders correctly with no initialContents", async () => {
@@ -87,14 +92,15 @@ describe("UCSBOrganizationForm tests", () => {
     const submitButton = screen.getByText(/Create/);
     fireEvent.click(submitButton);
 
-    await screen.findByText(/OrgTranslationShort is required/);
+    await screen.findByText(/OrgCode is required/);
+    expect(
+      screen.getByText(/OrgTranslationShort is required/),
+    ).toBeInTheDocument();
     expect(screen.getByText(/OrgTranslation is required/)).toBeInTheDocument();
     expect(screen.getByText(/Inactive is required/)).toBeInTheDocument();
 
-    const orgTranslationShortInput = screen.getByTestId(
-      `${testId}-orgTranslationShort`,
-    );
-    fireEvent.change(orgTranslationShortInput, {
+    const orgCodeInput = screen.getByTestId(`${testId}-orgcode`);
+    fireEvent.change(orgCodeInput, {
       target: { value: "a".repeat(31) },
     });
     fireEvent.click(submitButton);
