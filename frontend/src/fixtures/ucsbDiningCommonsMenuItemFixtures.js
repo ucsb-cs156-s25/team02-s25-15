@@ -1,6 +1,6 @@
 const ucsbDiningCommonsMenuItemFixtures = {
   oneDiningCommonsMenuItem: {
-    id: 0,
+    id: 1,
     diningCommonsCode: "Ortega",
     name: "Pork Dan Dan Noodles",
     station: "Entree Specials",
