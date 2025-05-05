@@ -1,6 +1,6 @@
 const ucsbDiningCommonsMenuItemFixtures = {
   oneDiningCommonsMenuItem: {
-    id: 0,
+    id: 1,
     diningCommonsCode: "Ortega",
     name: "Pork Dan Dan Noodles",
     station: "Entree Specials",
@@ -9,7 +9,7 @@ const ucsbDiningCommonsMenuItemFixtures = {
     {
       id: 1,
       diningCommonsCode: "De La Guerra",
-      name: "Chicken Chile Verde Burrito"
+      name: "Chicken Chile Verde Burrito",
       station: "Taqueria (East Side)",
     },
     {
