@@ -14,7 +14,7 @@ TODO: Fill in this table with correct information.
 | Table                     | Name         | Github Id |
 |---------------------------|--------------|-----------|
 | UCSBDiningCommonsMenuItem | Lucas H.     | Esomevath |
-| UCSBOrganization          |              |           |
+| UCSBOrganization          | Yue C.       | yuecao365 |
 | RecommendationRequest     | Perry T.     | perryjirakit |
 | MenuItemReview            | Tyler W.     | Tyler W.  |
 | HelpRequest               |              |           |
