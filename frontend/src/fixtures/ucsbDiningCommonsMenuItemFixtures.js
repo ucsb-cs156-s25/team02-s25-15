@@ -9,7 +9,7 @@ const ucsbDiningCommonsMenuItemFixtures = {
     {
       id: 1,
       diningCommonsCode: "De La Guerra",
-      name: "Chicken Chile Verde Burrito"
+      name: "Chicken Chile Verde Burrito",
       station: "Taqueria (East Side)",
     },
     {
