@@ -24,7 +24,7 @@ function UCSBOrganizationForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="orgcode">OrgCode</Form.Label>
         <Form.Control
-          data-testid={testIdPrefix + "-orgcode"}
+          data-testid={testIdPrefix + "-orgCode"}
           id="orgcode"
           type="text"
           isInvalid={Boolean(errors.orgCode)}
@@ -46,6 +46,7 @@ function UCSBOrganizationForm({
           OrgTranslationShort
         </Form.Label>
         <Form.Control
+          data-testid={testIdPrefix + "-orgTranslationShort"}
           id="orgtranslationshort"
           type="text"
           isInvalid={Boolean(errors.orgTranslationShort)}
@@ -61,6 +62,7 @@ function UCSBOrganizationForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="orgtranslation">OrgTranslation</Form.Label>
         <Form.Control
+          data-testid={testIdPrefix + "-orgTranslation"}
           id="orgtranslation"
           type="text"
           isInvalid={Boolean(errors.orgTranslation)}
@@ -76,6 +78,7 @@ function UCSBOrganizationForm({
       <Form.Group className="mb-3">
         <Form.Label htmlFor="inactive">Inactive</Form.Label>
         <Form.Select
+          data-testid={testIdPrefix + "-inactive"}
           id="inactive"
           isInvalid={Boolean(errors.inactive)}
           {...register("inactive", {
@@ -91,7 +94,9 @@ function UCSBOrganizationForm({
         </Form.Control.Feedback>
       </Form.Group>
 
-      <Button type="submit">{buttonLabel}</Button>
+      <Button type="submit" data-testid={testIdPrefix + "-submit"}>
+        {buttonLabel}
+      </Button>
       <Button
         variant="Secondary"
         onClick={() => navigate(-1)}
