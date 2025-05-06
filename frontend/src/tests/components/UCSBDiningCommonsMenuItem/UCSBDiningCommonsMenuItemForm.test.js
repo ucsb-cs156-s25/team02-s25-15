@@ -24,14 +24,20 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
   test("renders correctly when passing in a UCSBDiningCommonsMenuItem", async () => {
     render(
       <Router>
-        <UCSBDiningCommonsMenuItemForm initialContents={ucsbDiningCommonsMenuItemFixtures.oneDiningCommonsMenuItem} />
+        <UCSBDiningCommonsMenuItemForm
+          initialContents={
+            ucsbDiningCommonsMenuItemFixtures.oneDiningCommonsMenuItem
+          }
+        />
       </Router>,
     );
     await screen.findByTestId(/UCSBDiningCommonsMenuItemForm-id/);
     expect(screen.getByText(/Id/)).toBeInTheDocument();
-    expect(screen.getByTestId(/UCSBDiningCommonsMenuItemForm-id/)).toHaveValue("1");
+    expect(screen.getByTestId(/UCSBDiningCommonsMenuItemForm-id/)).toHaveValue(
+      "1",
+    );
   });
-/* no such thing as bad input
+  /* no such thing as bad input
   test("Correct Error messsages on bad input", async () => {
     render(
       <Router>
@@ -55,7 +61,9 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
       </Router>,
     );
     await screen.findByTestId("UCSBDiningCommonsMenuItemForm-submit");
-    const submitButton = screen.getByTestId("UCSBDiningCommonsMenuItemForm-submit");
+    const submitButton = screen.getByTestId(
+      "UCSBDiningCommonsMenuItemForm-submit",
+    );
 
     fireEvent.click(submitButton);
 
@@ -63,7 +71,7 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
     expect(screen.getByText(/Name is required./)).toBeInTheDocument();
     expect(screen.getByText(/Station is required./)).toBeInTheDocument();
   });
-/* all inputs are good
+  /* all inputs are good
   test("No Error messsages on good input", async () => {
     const mockSubmitAction = jest.fn();
 
@@ -96,7 +104,9 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
       </Router>,
     );
     await screen.findByTestId("UCSBDiningCommonsMenuItemForm-cancel");
-    const cancelButton = screen.getByTestId("UCSBDiningCommonsMenuItemForm-cancel");
+    const cancelButton = screen.getByTestId(
+      "UCSBDiningCommonsMenuItemForm-cancel",
+    );
 
     fireEvent.click(cancelButton);
 
