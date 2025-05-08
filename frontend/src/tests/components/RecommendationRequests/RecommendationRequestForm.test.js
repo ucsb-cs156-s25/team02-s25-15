@@ -16,7 +16,14 @@ jest.mock("react-router-dom", () => ({
 describe("RecommendationRequestForm tests", () => {
   const queryClient = new QueryClient();
 
-  const expectedHeaders = ["Requestor Email", "Professor Email", "Explanation", "Date Requested (in UTC)", "Date Needed (in UTC)", "Done"];
+  const expectedHeaders = [
+    "Requestor Email",
+    "Professor Email",
+    "Explanation",
+    "Date Requested (in UTC)",
+    "Date Needed (in UTC)",
+    "Done",
+  ];
   const testId = "RecommendationRequestForm";
 
   test("renders correctly with no initialContents", async () => {
@@ -30,17 +37,21 @@ describe("RecommendationRequestForm tests", () => {
 
     expect(await screen.findByText(/Create/)).toBeInTheDocument();
 
-    expectedHeaders.forEach( (headerText) => {
+    expectedHeaders.forEach((headerText) => {
       const header = screen.getByText(headerText);
       expect(header).toBeInTheDocument();
-    } );
+    });
   });
 
   test("renders correctly when passing in initialContents", async () => {
     render(
       <QueryClientProvider client={queryClient}>
         <Router>
-          <RecommendationRequestForm initialContents={recommendationRequestFixtures.oneRecommendationRequest} />
+          <RecommendationRequestForm
+            initialContents={
+              recommendationRequestFixtures.oneRecommendationRequest
+            }
+          />
         </Router>
       </QueryClientProvider>,
     );
