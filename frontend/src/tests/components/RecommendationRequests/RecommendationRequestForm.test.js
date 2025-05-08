@@ -1,7 +1,9 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
-import RecommendationRequestForm, { removeZ } from "main/components/RecommendationRequests/RecommendationRequestForm";
+import RecommendationRequestForm, {
+  removeZ,
+} from "main/components/RecommendationRequests/RecommendationRequestForm";
 import { recommendationRequestFixtures } from "fixtures/recommendationRequestFixtures";
 
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -30,7 +32,7 @@ describe("RecommendationRequestForm tests", () => {
     expect(removeZ("ABC")).toBe("ABC");
     expect(removeZ("ABCZ")).toBe("ABC");
   });
-  
+
   test("renders correctly with no initialContents", async () => {
     render(
       <QueryClientProvider client={queryClient}>
@@ -71,10 +73,24 @@ describe("RecommendationRequestForm tests", () => {
     expect(await screen.findByTestId(`${testId}-id`)).toBeInTheDocument();
     expect(screen.getByText(`Id`)).toBeInTheDocument();
 
-    expect(screen.getByLabelText("Id")).toHaveValue(String(recommendationRequestFixtures.oneRecommendationRequest.id));
-    expect(screen.getByLabelText("Requestor Email")).toHaveValue(String(recommendationRequestFixtures.oneRecommendationRequest.requesterEmail));
-    expect(screen.getByLabelText("Professor Email")).toHaveValue(String(recommendationRequestFixtures.oneRecommendationRequest.professorEmail));
-    expect(screen.getByLabelText("Explanation")).toHaveValue(String(recommendationRequestFixtures.oneRecommendationRequest.explanation));
+    expect(screen.getByLabelText("Id")).toHaveValue(
+      String(recommendationRequestFixtures.oneRecommendationRequest.id),
+    );
+    expect(screen.getByLabelText("Requestor Email")).toHaveValue(
+      String(
+        recommendationRequestFixtures.oneRecommendationRequest.requesterEmail,
+      ),
+    );
+    expect(screen.getByLabelText("Professor Email")).toHaveValue(
+      String(
+        recommendationRequestFixtures.oneRecommendationRequest.professorEmail,
+      ),
+    );
+    expect(screen.getByLabelText("Explanation")).toHaveValue(
+      String(
+        recommendationRequestFixtures.oneRecommendationRequest.explanation,
+      ),
+    );
   });
 
   test("that navigate(-1) is called when Cancel is clicked", async () => {
