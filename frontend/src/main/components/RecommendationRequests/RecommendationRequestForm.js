@@ -17,6 +17,7 @@ function RecommendationRequestForm({
       {
         ...initialContents,
         dateRequested: initialContents.dateRequested.replace("Z", ""),
+        dateNeeded: initialContents.dateNeeded.replace("Z", ""),
       } || {},
   });
   // Stryker restore all
@@ -115,6 +116,42 @@ function RecommendationRequestForm({
         />
         <Form.Control.Feedback type="invalid">
           {errors.dateRequested && "Date Requested is required. "}
+        </Form.Control.Feedback>
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="dateNeeded">Date Needed (in UTC)</Form.Label>
+        <Form.Control
+          data-testid={testIdPrefix + "-dateNeeded"}
+          id="dateNeeded"
+          type="datetime-local"
+          isInvalid={Boolean(errors.dateNeeded)}
+          {...register("dateNeeded", {
+            required: true,
+            pattern: isodate_regex,
+          })}
+        />
+        <Form.Control.Feedback type="invalid">
+          {errors.dateNeeded && "Date Needed is required. "}
+        </Form.Control.Feedback>
+      </Form.Group>
+
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="done">Done</Form.Label>
+        <Form.Control
+          id="done"
+          as="select"
+          isInvalid={Boolean(errors.done)}
+          {...register("done", {
+            required: "Done is required.",
+          })}
+        >
+          <option value="">---</option>
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </Form.Control>
+        <Form.Control.Feedback type="invalid">
+          {errors.done?.message}
         </Form.Control.Feedback>
       </Form.Group>
 
