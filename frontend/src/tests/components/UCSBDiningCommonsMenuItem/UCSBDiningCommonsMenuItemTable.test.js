@@ -24,7 +24,7 @@ describe("UserTable tests", () => {
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
           <UCSBDiningCommonsMenuItemTable
-            diningCommonsMenuItem={
+            diningcommonsmenuitem={
               ucsbDiningCommonsMenuItemFixtures.threeDiningCommonsMenuItems
             }
             currentUser={currentUser}
@@ -72,7 +72,7 @@ describe("UserTable tests", () => {
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
           <UCSBDiningCommonsMenuItemTable
-            diningCommonsMenuItem={
+            diningcommonsmenuitem={
               ucsbDiningCommonsMenuItemFixtures.threeDiningCommonsMenuItems
             }
             currentUser={currentUser}
@@ -122,7 +122,7 @@ describe("UserTable tests", () => {
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
           <UCSBDiningCommonsMenuItemTable
-            diningCommonsMenuItem={
+            diningcommonsmenuitem={
               ucsbDiningCommonsMenuItemFixtures.threeDiningCommonsMenuItems
             }
             currentUser={currentUser}
@@ -165,7 +165,7 @@ describe("UserTable tests", () => {
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
           <UCSBDiningCommonsMenuItemTable
-            diningCommonsMenuItem={
+            diningcommonsmenuitem={
               ucsbDiningCommonsMenuItemFixtures.threeDiningCommonsMenuItems
             }
             currentUser={currentUser}

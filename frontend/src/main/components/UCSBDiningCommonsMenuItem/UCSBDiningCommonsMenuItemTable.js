@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
 export default function UCSBDiningCommonsMenuItemTable({
-  diningCommonsMenuItem,
+  diningcommonsmenuitem,
   currentUser,
 }) {
   const navigate = useNavigate();
@@ -73,7 +73,7 @@ export default function UCSBDiningCommonsMenuItemTable({
 
   return (
     <OurTable
-      data={diningCommonsMenuItem}
+      data={diningcommonsmenuitem}
       columns={columns}
       testid={"UCSBDiningCommonsMenuItemTable"}
     />
