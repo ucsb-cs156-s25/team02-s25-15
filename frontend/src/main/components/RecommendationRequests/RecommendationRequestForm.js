@@ -7,19 +7,19 @@ function RecommendationRequestForm({
   submitAction,
   buttonLabel = "Create",
 }) {
+
+  const defaultValues = initialContents ? {
+    ...initialContents,
+    dateRequested: initialContents.dateRequested.replace("Z", ""),
+    dateNeeded: initialContents.dateNeeded.replace("Z", ""),
+  } : {};
+
   // Stryker disable all
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm({
-    defaultValues:
-      {
-        ...initialContents,
-        dateRequested: initialContents.dateRequested.replace("Z", ""),
-        dateNeeded: initialContents.dateNeeded.replace("Z", ""),
-      } || {},
-  });
+  } = useForm({defaultValues });
   // Stryker restore all
 
   // For explanation, see: https://stackoverflow.com/questions/3143070/javascript-regex-iso-datetime
