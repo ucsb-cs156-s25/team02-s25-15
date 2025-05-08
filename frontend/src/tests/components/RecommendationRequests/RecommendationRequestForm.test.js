@@ -103,7 +103,6 @@ describe("RecommendationRequestForm tests", () => {
     expect(screen.getByText(/Date Needed is required/)).toBeInTheDocument();
     expect(screen.getByText(/Done is required/)).toBeInTheDocument();
 
-    const explanationInput = screen.getByTestId(`${testId}-explanation`);
     fireEvent.click(submitButton);
   });
 });
