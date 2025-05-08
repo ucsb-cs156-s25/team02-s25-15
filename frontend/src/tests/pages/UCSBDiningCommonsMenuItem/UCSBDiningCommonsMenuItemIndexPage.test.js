@@ -69,11 +69,11 @@ describe("UCSBDiningCommonsMenuItemIndexPage tests", () => {
       ).toBeInTheDocument();
     });
     const button = screen.getByText(/Create UCSBDiningCommonsMenuItem/);
-    expect(button).toHaveAttribute("href", "/ucsbdiningcommonsmenuitem/create");
+    expect(button).toHaveAttribute("href", "/diningcommonsmenuitem/create");
     expect(button).toHaveAttribute("style", "float: right;");
   });
 
-  test("renders three diningcommonsmenuitem correctly for regular user", async () => {
+  test("renders three dining commons menu item correctly for regular user", async () => {
     // arrange
     setupUserOnly();
     const queryClient = new QueryClient();
