@@ -104,11 +104,6 @@ describe("RecommendationRequestForm tests", () => {
     expect(screen.getByText(/Done is required/)).toBeInTheDocument();
 
     const explanationInput = screen.getByTestId(`${testId}-explanation`);
-    fireEvent.change(explanationInput, { target: { value: "a".repeat(256) } });
     fireEvent.click(submitButton);
-
-    await waitFor(() => {
-      expect(screen.getByText(/Max length 255 characters/)).toBeInTheDocument();
-    });
   });
 });
