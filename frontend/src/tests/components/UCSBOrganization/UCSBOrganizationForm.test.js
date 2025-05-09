@@ -125,5 +125,4 @@ describe("UCSBOrganizationForm tests", () => {
     const orgCodeInput = await screen.findByTestId(`${testId}-orgCode`);
     expect(orgCodeInput).toHaveAttribute("readOnly");
   });
-
 });
