@@ -110,7 +110,7 @@ describe("HelpRequestTable tests", () => {
     );
     expect(
       screen.getByTestId(`${testId}-cell-row-1-col-solved`),
-    ).toHaveTextContent("");
+    ).toHaveTextContent(false);
 
     const editButton = screen.getByTestId(
       `${testId}-cell-row-0-col-Edit-button`,

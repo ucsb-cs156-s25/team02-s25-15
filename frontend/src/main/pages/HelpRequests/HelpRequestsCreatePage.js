@@ -12,9 +12,10 @@ export default function HelpRequestsCreatePage({ storybook = false }) {
       requesterEmail: helpRequest.requesterEmail,
       teamId: helpRequest.teamId,
       tableOrBreakoutRoom: helpRequest.tableOrBreakoutRoom,
+      requestTime: helpRequest.requestTime,
       explanation: helpRequest.explanation,
       solved: helpRequest.solved,
-      requestTime: helpRequest.requestTime,
+      
     },
   });
 
