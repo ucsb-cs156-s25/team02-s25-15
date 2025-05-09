@@ -60,6 +60,9 @@ export default function AppNavbar({
               )}
               {currentUser && currentUser.loggedIn ? (
                 <>
+                  <Nav.Link as={Link} to="/articles">
+                    Articles
+                  </Nav.Link>
                   <Nav.Link as={Link} to="/restaurants">
                     Restaurants
                   </Nav.Link>
@@ -71,6 +74,14 @@ export default function AppNavbar({
                   </Nav.Link>
                   <Nav.Link as={Link} to="/diningcommonsmenuitem">
                     UCSB Dining Commons Menu Item
+                  <Nav.Link as={Link} to="/recommendationrequest">
+                    Recommendation Request
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/ucsborganization">
+                    UCSB Organizations
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/MenuItemReviews">
+                    Menu Item Reviews
                   </Nav.Link>
                 </>
               ) : (
