@@ -30,7 +30,8 @@ ThreeItemsOrdinaryUser.args = {
 
 export const ThreeItemsAdminUser = Template.bind({});
 ThreeItemsAdminUser.args = {
-  restaurants: recommendationRequestFixtures.threeRestaurants,
+  recommendationrequests:
+    recommendationRequestFixtures.threeRecommendationRequests,
   currentUser: currentUserFixtures.adminUser,
 };
 
