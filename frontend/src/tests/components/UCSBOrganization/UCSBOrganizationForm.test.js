@@ -109,4 +109,21 @@ describe("UCSBOrganizationForm tests", () => {
       expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
     });
   });
+
+  test("orgCode is readOnly when orgCodeReadOnly=true", async () => {
+    render(
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <UCSBOrganizationForm
+            initialContents={ucsbOrganizationFixtures.oneOrganization}
+            orgCodeReadOnly={true}
+          />
+        </Router>
+      </QueryClientProvider>,
+    );
+
+    const orgCodeInput = await screen.findByTestId(`${testId}-orgCode`);
+    expect(orgCodeInput).toHaveAttribute("readOnly");
+  });
+
 });
