@@ -123,6 +123,27 @@ describe("UCSBOrganizationForm tests", () => {
     );
 
     const orgCodeInput = await screen.findByTestId(`${testId}-orgCode`);
-    expect(orgCodeInput).toHaveAttribute("readOnly");
+    expect(orgCodeInput).toHaveProperty("readOnly", true);
   });
+
+    test("orgCode is editable when orgCodeReadOnly=false", async () => {
+    render(
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <UCSBOrganizationForm
+            initialContents={{ orgCode: "ABC" }}
+            orgCodeReadOnly={false}
+          />
+        </Router>
+      </QueryClientProvider>
+    );
+
+    const orgCodeInput = await screen.findByTestId(`${testId}-orgCode`);
+    expect(orgCodeInput).toHaveProperty("readOnly", false);
+
+    // Try changing the input
+    fireEvent.change(orgCodeInput, { target: { value: "XYZ" } });
+    expect(orgCodeInput).toHaveValue("XYZ");
+  });
+
 });
