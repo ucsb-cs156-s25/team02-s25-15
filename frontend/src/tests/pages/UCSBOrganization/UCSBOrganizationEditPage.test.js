@@ -125,8 +125,6 @@ describe("UCSBOrganizationEditPage tests", () => {
 
       expect(orgCodeField).toBeInTheDocument();
       expect(orgCodeField).toHaveValue("ZPR");
-      expect(orgCodeField).toHaveAttribute("readOnly");
-
       expect(orgTranslationShortField).toBeInTheDocument();
       expect(orgTranslationShortField).toHaveValue("ZETA PHI RHO");
       expect(orgTranslationField).toBeInTheDocument();

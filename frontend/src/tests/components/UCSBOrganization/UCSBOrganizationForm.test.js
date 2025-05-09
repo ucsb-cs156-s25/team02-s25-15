@@ -110,40 +110,37 @@ describe("UCSBOrganizationForm tests", () => {
     });
   });
 
-  test("orgCode is readOnly when orgCodeReadOnly=true", async () => {
+  test("orgCode is disabled when buttonLabel is 'Update'", async () => {
     render(
       <QueryClientProvider client={queryClient}>
         <Router>
           <UCSBOrganizationForm
-            initialContents={ucsbOrganizationFixtures.oneOrganization}
-            orgCodeReadOnly={true}
-          />
-        </Router>
-      </QueryClientProvider>,
-    );
-
-    const orgCodeInput = await screen.findByTestId(`${testId}-orgCode`);
-    expect(orgCodeInput).toHaveProperty("readOnly", true);
-  });
-
-    test("orgCode is editable when orgCodeReadOnly=false", async () => {
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Router>
-          <UCSBOrganizationForm
-            initialContents={{ orgCode: "ABC" }}
-            orgCodeReadOnly={false}
+            initialContents={{ orgCode: "ZPR" }}
+            buttonLabel="Update"
           />
         </Router>
       </QueryClientProvider>
     );
 
-    const orgCodeInput = await screen.findByTestId(`${testId}-orgCode`);
-    expect(orgCodeInput).toHaveProperty("readOnly", false);
+    const orgCodeInput = await screen.findByTestId("UCSBOrganizationForm-orgCode");
+    expect(orgCodeInput).toBeDisabled();
+  });
 
-    // Try changing the input
-    fireEvent.change(orgCodeInput, { target: { value: "XYZ" } });
-    expect(orgCodeInput).toHaveValue("XYZ");
+
+  test("orgCode is enabled when buttonLabel is not 'Update'", async () => {
+    render(
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <UCSBOrganizationForm
+            initialContents={{ orgCode: "ZPR" }}
+            buttonLabel="Create"
+          />
+        </Router>
+      </QueryClientProvider>
+    );
+
+    const orgCodeInput = await screen.findByTestId("UCSBOrganizationForm-orgCode");
+    expect(orgCodeInput).not.toBeDisabled();
   });
 
 });
