@@ -166,6 +166,13 @@ describe("RecommendationRequestTable tests", () => {
       screen.getByTestId(`${testId}-cell-row-1-col-professorEmail`),
     ).toHaveTextContent("pconrad@ucsb.edu");
 
+    expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent(
+      "5",
+    );
+    expect(
+      screen.getByTestId(`${testId}-cell-row-1-col-done`),
+    ).toHaveTextContent("true");
+
     expect(screen.queryByText("Delete")).not.toBeInTheDocument();
     expect(screen.queryByText("Edit")).not.toBeInTheDocument();
   });
