@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for pages/MenuItemReview/MenuItemReviewIndexPage.js</title>
+    <title>Code coverage report for pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemIndexPage.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">pages/MenuItemReview</a> MenuItemReviewIndexPage.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">pages/UCSBDiningCommonsMenuItem</a> UCSBDiningCommonsMenuItemIndexPage.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -112,8 +112,7 @@
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -124,18 +123,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -144,6 +131,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -167,46 +165,45 @@
 import { useBackend } from "main/utils/useBackend";
 &nbsp;
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
-import { useCurrentUser, hasRole } from "main/utils/currentUser";
+import UCSBDiningCommonsMenuItemTable from "main/components/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemTable";
 import { Button } from "react-bootstrap";
-import MenuItemReviewTable from "main/components/MenuItemReviews/MenuItemReviewTable";
+import { useCurrentUser, hasRole } from "main/utils/currentUser";
 &nbsp;
-export default function <span class="fstat-no" title="function not covered" >MenuItemReviewIndexPage(</span>) {
+export default function <span class="fstat-no" title="function not covered" >UCSBDiningCommonsMenuItemIndexPage(</span>) {
   const currentUser = <span class="cstat-no" title="statement not covered" >useCurrentUser();</span>
-&nbsp;
-  const {
-    data: menuItemReviews,
-    error: _error,
-    status: _status,
-  } = <span class="cstat-no" title="statement not covered" >useBackend(</span>
-    // Stryker disable next-line all : don't test internal caching of React Query
-    ["/api/MenuItemReviews/all"],
-    { method: "GET", url: "/api/MenuItemReviews/all" },
-    // Stryker disable next-line all : don't test default value of empty list
-    [],
-  );
 &nbsp;
   const createButton = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (hasRole(currentUser, "ROLE_ADMIN")) {</span>
 <span class="cstat-no" title="statement not covered" >      return (</span>
         &lt;Button
           variant="primary"
-          href="/MenuItemReviews/create"
+          href="/diningcommonsmenuitem/create"
           style={{ float: "right" }}
         &gt;
-          Create MenuItemReview
+          Create UCSBDiningCommonsMenuItem
         &lt;/Button&gt;
       );
     }
   };
 &nbsp;
+  const {
+    data: diningcommonsmenuitem,
+    error: _error,
+    status: _status,
+  } = <span class="cstat-no" title="statement not covered" >useBackend(</span>
+    // Stryker disable next-line all : don't test internal caching of React Query
+    ["/api/ucsbdiningcommonsmenuitem/all"],
+    { method: "GET", url: "/api/ucsbdiningcommonsmenuitem/all" },
+    [],
+  );
+&nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;BasicLayout&gt;
       &lt;div className="pt-2"&gt;
         {createButton()}
-        &lt;h1&gt;Menu Item Reviews&lt;/h1&gt;
-        &lt;MenuItemReviewTable
-          menuItemReviews={menuItemReviews}
+        &lt;h1&gt;UCSBDiningCommonsMenuItem&lt;/h1&gt;
+        &lt;UCSBDiningCommonsMenuItemTable
+          diningcommonsmenuitem={diningcommonsmenuitem}
           currentUser={currentUser}
         /&gt;
       &lt;/div&gt;
