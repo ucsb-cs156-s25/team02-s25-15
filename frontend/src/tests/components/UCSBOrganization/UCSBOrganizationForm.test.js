@@ -119,13 +119,14 @@ describe("UCSBOrganizationForm tests", () => {
             buttonLabel="Update"
           />
         </Router>
-      </QueryClientProvider>
+      </QueryClientProvider>,
     );
 
-    const orgCodeInput = await screen.findByTestId("UCSBOrganizationForm-orgCode");
+    const orgCodeInput = await screen.findByTestId(
+      "UCSBOrganizationForm-orgCode",
+    );
     expect(orgCodeInput).toBeDisabled();
   });
-
 
   test("orgCode is enabled when buttonLabel is not 'Update'", async () => {
     render(
@@ -136,11 +137,12 @@ describe("UCSBOrganizationForm tests", () => {
             buttonLabel="Create"
           />
         </Router>
-      </QueryClientProvider>
+      </QueryClientProvider>,
     );
 
-    const orgCodeInput = await screen.findByTestId("UCSBOrganizationForm-orgCode");
+    const orgCodeInput = await screen.findByTestId(
+      "UCSBOrganizationForm-orgCode",
+    );
     expect(orgCodeInput).not.toBeDisabled();
   });
-
 });
