@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/Nav/AppNavbar.js</title>
+    <title>Code coverage report for components/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemForm.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/Nav</a> AppNavbar.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/UCSBDiningCommonsMenuItem</a> UCSBDiningCommonsMenuItemForm.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>20/20</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -170,7 +170,18 @@
 <a name='L105'></a><a href='#L105'>105</a>
 <a name='L106'></a><a href='#L106'>106</a>
 <a name='L107'></a><a href='#L107'>107</a>
-<a name='L108'></a><a href='#L108'>108</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -181,14 +192,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">93x</span>
-<span class="cline-any cline-yes">93x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -275,115 +287,136 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { hasRole } from "main/utils/currentUser";
-import AppNavbarLocalhost from "main/components/Nav/AppNavbarLocalhost";
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Button, Form, Row, Col } from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 &nbsp;
-export default function AppNavbar({
-  currentUser,
-  systemInfo,
-  doLogout,
-  currentUrl = window.location.href,
+function UCSBDiningCommonsMenuItemForm({
+  initialContents,
+  submitAction,
+  buttonLabel = "Create",
 }) {
-  var oauthLogin = systemInfo?.oauthLogin || "/oauth2/authorization/google";
+  // Stryker disable all
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm({ defaultValues: initialContents || {} });
+  // Stryker restore all
+&nbsp;
+  const navigate = useNavigate();
+&nbsp;
   return (
-    &lt;&gt;
-      {(currentUrl.startsWith("http://localhost:3000") ||
-        currentUrl.startsWith("http://127.0.0.1:3000")) &amp;&amp; (
-        &lt;AppNavbarLocalhost url={currentUrl} /&gt;
-      )}
-      &lt;Navbar
-        expand="xl"
-        variant="dark"
-        bg="dark"
-        sticky="top"
-        data-testid="AppNavbar"
-      &gt;
-        &lt;Container&gt;
-          &lt;Navbar.Brand as={Link} to="/"&gt;
-            Example
-          &lt;/Navbar.Brand&gt;
+    &lt;Form onSubmit={handleSubmit(submitAction)}&gt;
+      &lt;Row&gt;
+        {initialContents &amp;&amp; (
+          &lt;Col&gt;
+            &lt;Form.Group className="mb-3"&gt;
+              &lt;Form.Label htmlFor="id"&gt;Id&lt;/Form.Label&gt;
+              &lt;Form.Control
+                data-testid="UCSBDiningCommonsMenuItemForm-id"
+                id="id"
+                type="text"
+                {...register("id")}
+                value={initialContents.id}
+                disabled
+              /&gt;
+            &lt;/Form.Group&gt;
+          &lt;/Col&gt;
+        )}
 &nbsp;
-          &lt;Navbar.Toggle /&gt;
+        &lt;Col&gt;
+          &lt;Form.Group className="mb-3"&gt;
+            &lt;Form.Label htmlFor="diningCommonsCode"&gt;
+              Dining Commons Code
+            &lt;/Form.Label&gt;
+            &lt;Form.Control
+              data-testid="UCSBDiningCommonsMenuItemForm-diningCommonsCode"
+              id="diningCommonsCode"
+              type="text"
+              isInvalid={Boolean(errors.diningCommonsCode)}
+              {...register("diningCommonsCode", {
+                required: "Dining Commons Code is required.",
+              })}
+            /&gt;
+            &lt;Form.Control.Feedback type="invalid"&gt;
+              {errors.diningCommonsCode?.message}
+            &lt;/Form.Control.Feedback&gt;
+          &lt;/Form.Group&gt;
+        &lt;/Col&gt;
+        &lt;Col&gt;
+          &lt;Form.Group className="mb-3"&gt;
+            &lt;Form.Label htmlFor="station"&gt;Station&lt;/Form.Label&gt;
+            &lt;Form.Control
+              data-testid="UCSBDiningCommonsMenuItemForm-station"
+              id="station"
+              type="text"
+              isInvalid={Boolean(errors.station)}
+              {...register("station", {
+                required: "Station is required.",
+              })}
+            /&gt;
+            &lt;Form.Control.Feedback type="invalid"&gt;
+              {errors.station?.message}
+            &lt;/Form.Control.Feedback&gt;
+          &lt;/Form.Group&gt;
+        &lt;/Col&gt;
+      &lt;/Row&gt;
 &nbsp;
-          &lt;Nav className="me-auto"&gt;
-            {systemInfo?.springH2ConsoleEnabled &amp;&amp; (
-              &lt;&gt;
-                &lt;Nav.Link href="/h2-console"&gt;H2Console&lt;/Nav.Link&gt;
-              &lt;/&gt;
-            )}
-            {systemInfo?.showSwaggerUILink &amp;&amp; (
-              &lt;&gt;
-                &lt;Nav.Link href="/swagger-ui/index.html"&gt;Swagger&lt;/Nav.Link&gt;
-              &lt;/&gt;
-            )}
-          &lt;/Nav&gt;
+      &lt;Row&gt;
+        &lt;Col&gt;
+          &lt;Form.Group className="mb-3"&gt;
+            &lt;Form.Label htmlFor="name"&gt;Name&lt;/Form.Label&gt;
+            &lt;Form.Control
+              data-testid="UCSBDiningCommonsMenuItemForm-name"
+              id="name"
+              type="text"
+              isInvalid={Boolean(errors.name)}
+              {...register("name", {
+                required: "Name is required.",
+              })}
+            /&gt;
+            &lt;Form.Control.Feedback type="invalid"&gt;
+              {errors.name?.message}
+            &lt;/Form.Control.Feedback&gt;
+          &lt;/Form.Group&gt;
+        &lt;/Col&gt;
+      &lt;/Row&gt;
 &nbsp;
-          &lt;&gt;
-            {/* be sure that each NavDropdown has a unique id and data-testid  */}
-          &lt;/&gt;
-&nbsp;
-          &lt;Navbar.Collapse className="justify-content-between"&gt;
-            &lt;Nav className="mr-auto"&gt;
-              {hasRole(currentUser, "ROLE_ADMIN") &amp;&amp; (
-                &lt;NavDropdown
-                  title="Admin"
-                  id="appnavbar-admin-dropdown"
-                  data-testid="appnavbar-admin-dropdown"
-                &gt;
-                  &lt;NavDropdown.Item href="/admin/users"&gt;Users&lt;/NavDropdown.Item&gt;
-                &lt;/NavDropdown&gt;
-              )}
-              {currentUser &amp;&amp; currentUser.loggedIn ? (
-                &lt;&gt;
-                  &lt;Nav.Link as={Link} to="/articles"&gt;
-                    Articles
-                  &lt;/Nav.Link&gt;
-                  &lt;Nav.Link as={Link} to="/restaurants"&gt;
-                    Restaurants
-                  &lt;/Nav.Link&gt;
-                  &lt;Nav.Link as={Link} to="/ucsbdates"&gt;
-                    UCSB Dates
-                  &lt;/Nav.Link&gt;
-                  &lt;Nav.Link as={Link} to="/placeholder"&gt;
-                    Placeholder
-                  &lt;/Nav.Link&gt;
-                  &lt;Nav.Link as={Link} to="/recommendationrequest"&gt;
-                    Recommendation Request
-                  &lt;/Nav.Link&gt;
-                  &lt;Nav.Link as={Link} to="/ucsborganization"&gt;
-                    UCSB Organizations
-                  &lt;/Nav.Link&gt;
-                  &lt;Nav.Link as={Link} to="/MenuItemReviews"&gt;
-                    Menu Item Reviews
-                  &lt;/Nav.Link&gt;
-                &lt;/&gt;
-              ) : (
-                &lt;&gt;&lt;/&gt;
-              )}
-            &lt;/Nav&gt;
-&nbsp;
-            &lt;Nav className="ml-auto"&gt;
-              {currentUser &amp;&amp; currentUser.loggedIn ? (
-                &lt;&gt;
-                  &lt;Navbar.Text className="me-3" as={Link} to="/profile"&gt;
-                    Welcome, {currentUser.root.user.email}
-                  &lt;/Navbar.Text&gt;
-                  &lt;Button onClick={doLogout}&gt;Log Out&lt;/Button&gt;
-                &lt;/&gt;
-              ) : (
-                &lt;Button href={oauthLogin}&gt;Log In&lt;/Button&gt;
-              )}
-            &lt;/Nav&gt;
-          &lt;/Navbar.Collapse&gt;
-        &lt;/Container&gt;
-      &lt;/Navbar&gt;
-    &lt;/&gt;
+      &lt;Row&gt;
+        &lt;Col&gt;
+          &lt;Button
+            type="submit"
+            data-testid="UCSBDiningCommonsMenuItemForm-submit"
+          &gt;
+            {buttonLabel}
+          &lt;/Button&gt;
+          &lt;Button
+            variant="Secondary"
+            onClick={() =&gt; navigate(-1)}
+            data-testid="UCSBDiningCommonsMenuItemForm-cancel"
+          &gt;
+            Cancel
+          &lt;/Button&gt;
+        &lt;/Col&gt;
+      &lt;/Row&gt;
+    &lt;/Form&gt;
   );
 }
+&nbsp;
+export default UCSBDiningCommonsMenuItemForm;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
