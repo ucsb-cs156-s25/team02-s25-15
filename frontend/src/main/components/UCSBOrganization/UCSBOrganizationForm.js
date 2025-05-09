@@ -6,6 +6,7 @@ function UCSBOrganizationForm({
   initialContents,
   submitAction,
   buttonLabel = "Create",
+  orgCodeReadOnly = false,
 }) {
   // Stryker disable all
   const {
@@ -28,6 +29,7 @@ function UCSBOrganizationForm({
           id="orgcode"
           type="text"
           isInvalid={Boolean(errors.orgCode)}
+          readOnly={orgCodeReadOnly}
           {...register("orgCode", {
             required: "OrgCode is required.",
             maxLength: {
