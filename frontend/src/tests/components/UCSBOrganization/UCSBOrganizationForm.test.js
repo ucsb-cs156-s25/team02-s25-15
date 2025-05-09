@@ -59,7 +59,7 @@ describe("UCSBOrganizationForm tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(await screen.findByTestId(`${testId}-orgcode`)).toBeInTheDocument();
+    expect(await screen.findByTestId(`${testId}-orgCode`)).toBeInTheDocument();
     expect(screen.getByText(`OrgCode`)).toBeInTheDocument();
   });
 
@@ -99,7 +99,7 @@ describe("UCSBOrganizationForm tests", () => {
     expect(screen.getByText(/OrgTranslation is required/)).toBeInTheDocument();
     expect(screen.getByText(/Inactive is required/)).toBeInTheDocument();
 
-    const orgCodeInput = screen.getByTestId(`${testId}-orgcode`);
+    const orgCodeInput = screen.getByTestId(`${testId}-orgCode`);
     fireEvent.change(orgCodeInput, {
       target: { value: "a".repeat(31) },
     });
