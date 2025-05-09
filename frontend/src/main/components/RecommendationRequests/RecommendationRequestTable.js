@@ -42,11 +42,11 @@ export default function RecommendationRequestTable({
 
     {
       Header: "Requester Email",
-      accessor: "requesteremail",
+      accessor: "requesterEmail",
     },
     {
       Header: "Professor Email",
-      accessor: "professoremail",
+      accessor: "professorEmail",
     },
     {
       Header: "Explanation",
@@ -54,11 +54,11 @@ export default function RecommendationRequestTable({
     },
     {
       Header: "Date Requested (in UTC)",
-      accessor: "daterequested",
+      accessor: "dateRequested",
     },
     {
       Header: "Date Needed (in UTC)",
-      accessor: "dateneeded",
+      accessor: "dateNeeded",
     },
     {
       Header: "Done",
@@ -74,6 +74,10 @@ export default function RecommendationRequestTable({
   }
 
   return (
-    <OurTable data={recommendationrequests} columns={columns} testid={testIdPrefix} />
+    <OurTable
+      data={recommendationrequests}
+      columns={columns}
+      testid={testIdPrefix}
+    />
   );
 }
