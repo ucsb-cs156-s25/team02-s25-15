@@ -71,6 +71,7 @@ export default function UCSBOrganizationEditPage({ storybook = false }) {
             submitAction={onSubmit}
             buttonLabel={"Update"}
             initialContents={ucsborganization}
+
             orgCodeReadOnly={true}
           />
         )}
