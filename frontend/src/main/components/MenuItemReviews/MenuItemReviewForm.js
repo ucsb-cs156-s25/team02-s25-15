@@ -14,7 +14,10 @@ function MenuItemReviewForm({
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm({ defaultValues });
+  } = useForm({
+    defaultValues,
+    mode: "onTouched",         // or "onBlur" or "all"
+  });
   // Stryker restore all
 
   const navigate = useNavigate();
