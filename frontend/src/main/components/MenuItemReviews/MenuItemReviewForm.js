@@ -50,7 +50,7 @@ function MenuItemReviewForm({
         <Form.Control
           id="itemId"
           type="number"
-          isInvalid={Boolean(errors.name)}
+          isInvalid={Boolean(errors.itemId)}
           {...register("itemId", {
             required: "ItemId is required.",
           })}
@@ -65,7 +65,7 @@ function MenuItemReviewForm({
         <Form.Control
           id="reviewerEmail"
           type="text"
-          isInvalid={Boolean(errors.description)}
+          isInvalid={Boolean(errors.reviewerEmail)}
           {...register("reviewerEmail", {
             required: "ReviewerEmail is required.",
           })}
@@ -80,7 +80,7 @@ function MenuItemReviewForm({
         <Form.Control
           id="stars"
           type="number"
-          isInvalid={Boolean(errors.description)}
+          isInvalid={Boolean(errors.stars)}
           {...register("stars", {
             required: "Stars is required.",
           })}
@@ -97,6 +97,7 @@ function MenuItemReviewForm({
         <Form.Control
           id="dateReviewed"
           type="datetime-local"
+          isInvalid={Boolean(errors.dateReviewed)}
           {...register("dateReviewed", {
             required: true,
             pattern: isodate_regex,
@@ -112,7 +113,7 @@ function MenuItemReviewForm({
         <Form.Control
           id="comments"
           type="text"
-          isInvalid={Boolean(errors.description)}
+          isInvalid={Boolean(errors.comments)}
           {...register("comments", {
             required: "Comments is required.",
           })}
