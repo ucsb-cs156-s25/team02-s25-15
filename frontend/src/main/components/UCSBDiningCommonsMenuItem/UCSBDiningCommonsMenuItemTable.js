@@ -10,13 +10,13 @@ import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
 export default function UCSBDiningCommonsMenuItemTable({
-  diningCommonsMenuItem,
+  diningcommonsmenuitem,
   currentUser,
 }) {
   const navigate = useNavigate();
 
   const editCallback = (cell) => {
-    navigate(`/ucsbdiningcommonsmenuitem/edit/${cell.row.values.id}`);
+    navigate(`/diningcommonsmenuitem/edit/${cell.row.values.id}`);
   };
 
   // Stryker disable all : hard to test for query caching
@@ -73,7 +73,7 @@ export default function UCSBDiningCommonsMenuItemTable({
 
   return (
     <OurTable
-      data={diningCommonsMenuItem}
+      data={diningcommonsmenuitem}
       columns={columns}
       testid={"UCSBDiningCommonsMenuItemTable"}
     />
