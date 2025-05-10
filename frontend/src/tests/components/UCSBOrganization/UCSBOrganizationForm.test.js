@@ -109,4 +109,40 @@ describe("UCSBOrganizationForm tests", () => {
       expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
     });
   });
+
+  test("orgCode is disabled when buttonLabel is 'Update'", async () => {
+    render(
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <UCSBOrganizationForm
+            initialContents={{ orgCode: "ZPR" }}
+            buttonLabel="Update"
+          />
+        </Router>
+      </QueryClientProvider>,
+    );
+
+    const orgCodeInput = await screen.findByTestId(
+      "UCSBOrganizationForm-orgCode",
+    );
+    expect(orgCodeInput).toBeDisabled();
+  });
+
+  test("orgCode is enabled when buttonLabel is not 'Update'", async () => {
+    render(
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <UCSBOrganizationForm
+            initialContents={{ orgCode: "ZPR" }}
+            buttonLabel="Create"
+          />
+        </Router>
+      </QueryClientProvider>,
+    );
+
+    const orgCodeInput = await screen.findByTestId(
+      "UCSBOrganizationForm-orgCode",
+    );
+    expect(orgCodeInput).not.toBeDisabled();
+  });
 });

@@ -28,6 +28,7 @@ function UCSBOrganizationForm({
           id="orgcode"
           type="text"
           isInvalid={Boolean(errors.orgCode)}
+          disabled={buttonLabel === "Update"}
           {...register("orgCode", {
             required: "OrgCode is required.",
             maxLength: {
