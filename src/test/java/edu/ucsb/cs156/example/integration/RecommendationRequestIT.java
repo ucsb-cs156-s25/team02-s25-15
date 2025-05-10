@@ -75,7 +75,7 @@ public class RecommendationRequestIT {
                 recommendationRequestRepository.save(recommendationRequest1);
 
                 // act
-                MvcResult response = mockMvc.perform(get("/api/recommendationRequests?id=1"))
+                MvcResult response = mockMvc.perform(get("/api/recommendationrequest?id=1"))
                                 .andExpect(status().isOk()).andReturn();
 
                 // assert
@@ -85,26 +85,32 @@ public class RecommendationRequestIT {
                 assertEquals(expectedJson, responseString);
         }
 
-        // @WithMockUser(roles = { "ADMIN", "USER" })
-        // @Test
-        // public void an_admin_user_can_post_a_new_recommendationRequest() throws Exception {
-        //         // arrange
+        @WithMockUser(roles = { "ADMIN", "USER" })
+        @Test
+        public void an_admin_user_can_post_a_new_recommendationRequest() throws Exception {
+                // arrange
 
-        //         RecommendationRequest recommendationRequest1 = RecommendationRequest.builder()
-        //                         .id(1L)
-        //                         .name("Chipotle")
-        //                         .description("Mexican")
-        //                         .build();
+                LocalDateTime ldt1 = LocalDateTime.parse("2022-01-03T00:00:00");
+                LocalDateTime ldt2 = LocalDateTime.parse("2022-01-03T00:00:00");
+                RecommendationRequest recommendationRequest1 = RecommendationRequest.builder()
+                                .id(1L)
+                                .requesterEmail("jthampiratwong@ucsb.edu")
+                                .professorEmail("pconrad@ucsb.edu")
+                                .explanation("recommendation request")
+                                .dateRequested(ldt1)
+                                .dateNeeded(ldt2)
+                                .done(true)
+                                .build();
 
-        //         // act
-        //         MvcResult response = mockMvc.perform(
-        //                         post("/api/recommendationRequests/post?name=Chipotle&description=Mexican")
-        //                                         .with(csrf()))
-        //                         .andExpect(status().isOk()).andReturn();
+                // act
+                MvcResult response = mockMvc.perform(
+                                post("/api/recommendationrequest/post?requesterEmail=jthampiratwong@ucsb.edu&professorEmail=pconrad@ucsb.edu&explanation=recommendation request&dateRequested=2022-01-03T00:00:00&dateNeeded=2022-01-03T00:00:00&done=true")
+                                                .with(csrf()))
+                                .andExpect(status().isOk()).andReturn();
 
-        //         // assert
-        //         String expectedJson = mapper.writeValueAsString(recommendationRequest1);
-        //         String responseString = response.getResponse().getContentAsString();
-        //         assertEquals(expectedJson, responseString);
-        // }
+                // assert
+                String expectedJson = mapper.writeValueAsString(recommendationRequest1);
+                String responseString = response.getResponse().getContentAsString();
+                assertEquals(expectedJson, responseString);
+        }
 }
