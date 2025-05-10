@@ -17,12 +17,12 @@ describe("HelpRequestForm tests", () => {
   const queryClient = new QueryClient();
 
   const expectedHeaders = [
-    "RequesterEmail",
-    "TeamId",
-    "TableOrBreakoutRoom",
-    "requestTime",
-    "explanation",
-    "solved",
+    "Requester Email",
+    "Team Id",
+    "Table or Breakout Room",
+    "Request Time",
+    "Explanation",
+    "Solved",
   ];
   const testId = "HelpRequestForm";
 
@@ -94,14 +94,14 @@ describe("HelpRequestForm tests", () => {
     const submitButton = screen.getByText(/Create/);
     fireEvent.click(submitButton);
 
-    await screen.findByText(/RequesterEmail is required/);
-    expect(screen.getByText(/TeamId is required/)).toBeInTheDocument();
+    await screen.findByText(/Requester Email is required/);
+    expect(screen.getByText(/Team Id is required/)).toBeInTheDocument();
     expect(
-      screen.getByText(/TableOrBreakoutRoom is required/),
+      screen.getByText(/Table or Breakout Room is required/),
     ).toBeInTheDocument();
-    expect(screen.getByText(/requestTime is required/)).toBeInTheDocument();
-    expect(screen.getByText(/explanation is required/)).toBeInTheDocument();
-    expect(screen.getByText(/solved is required/)).toBeInTheDocument();
+    expect(screen.getByText(/Request Time is required/)).toBeInTheDocument();
+    expect(screen.getByText(/Explanation is required/)).toBeInTheDocument();
+    expect(screen.getByText(/Solved is required/)).toBeInTheDocument();
 
     const nameInput = screen.getByTestId(`${testId}-requesterEmail`);
     fireEvent.change(nameInput, { target: { value: "a".repeat(31) } });

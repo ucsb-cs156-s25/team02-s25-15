@@ -44,14 +44,14 @@ function HelpRequestForm({
       )}
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="requesterEmail">RequesterEmail</Form.Label>
+        <Form.Label htmlFor="requesterEmail">Requester Email</Form.Label>
         <Form.Control
           data-testid={testIdPrefix + "-requesterEmail"}
           id="requesterEmail"
           type="text"
           isInvalid={Boolean(errors.requesterEmail)}
           {...register("requesterEmail", {
-            required: "RequesterEmail is required.",
+            required: "Requester Email is required.",
             maxLength: {
               value: 30,
               message: "Max length 30 characters",
@@ -64,13 +64,13 @@ function HelpRequestForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="teamId">TeamId</Form.Label>
+        <Form.Label htmlFor="teamId">Team Id</Form.Label>
         <Form.Control
           id="teamId"
           type="text"
           isInvalid={Boolean(errors.teamId)}
           {...register("teamId", {
-            required: "TeamId is required.",
+            required: "Team Id is required.",
           })}
         />
         <Form.Control.Feedback type="invalid">
@@ -80,14 +80,14 @@ function HelpRequestForm({
 
       <Form.Group className="mb-3">
         <Form.Label htmlFor="tableOrBreakoutRoom">
-          TableOrBreakoutRoom
+          Table or Breakout Room
         </Form.Label>
         <Form.Control
           id="tableOrBreakoutRoom"
           type="text"
           isInvalid={Boolean(errors.tableOrBreakoutRoom)}
           {...register("tableOrBreakoutRoom", {
-            required: "TableOrBreakoutRoom is required.",
+            required: "Table or Breakout Room is required.",
           })}
         />
         <Form.Control.Feedback type="invalid">
@@ -96,7 +96,7 @@ function HelpRequestForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="requestTime">requestTime</Form.Label>
+        <Form.Label htmlFor="requestTime">Request Time</Form.Label>
         <Form.Control
           id="requestTime"
           type="datetime-local"
@@ -107,18 +107,18 @@ function HelpRequestForm({
           })}
         />
         <Form.Control.Feedback type="invalid">
-          {errors.requestTime && "requestTime is required. "}
+          {errors.requestTime && "Request Time is required. "}
         </Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="explanation">explanation</Form.Label>
+        <Form.Label htmlFor="explanation">Explanation</Form.Label>
         <Form.Control
           id="explanation"
           type="text"
           isInvalid={Boolean(errors.explanation)}
           {...register("explanation", {
-            required: "explanation is required.",
+            required: "Explanation is required.",
           })}
         />
         <Form.Control.Feedback type="invalid">
@@ -127,15 +127,19 @@ function HelpRequestForm({
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="solved">solved</Form.Label>
+        <Form.Label htmlFor="solved">Solved</Form.Label>
         <Form.Control
           id="solved"
-          type="text"
+          as="select"
           isInvalid={Boolean(errors.solved)}
           {...register("solved", {
-            required: "solved is required.",
+            required: "Solved is required.",
           })}
-        />
+        >
+          <option value="">---</option>
+          <option value="true">True</option>
+          <option value="false">False</option>
+        </Form.Control>
         <Form.Control.Feedback type="invalid">
           {errors.solved?.message}
         </Form.Control.Feedback>

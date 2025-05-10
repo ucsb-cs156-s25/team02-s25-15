@@ -20,7 +20,7 @@ export default function HelpRequestsCreatePage({ storybook = false }) {
 
   const onSuccess = (helpRequest) => {
     toast(
-      `New helpRequest Created - id: ${helpRequest.id} requesterEmail: ${helpRequest.requesterEmail}`,
+      `New HelpRequest Created - id: ${helpRequest.id} RequesterEmail: ${helpRequest.requesterEmail}`,
     );
   };
 

@@ -19,12 +19,12 @@ describe("HelpRequestTable tests", () => {
 
   const expectedHeaders = [
     "id",
-    "RequesterEmail",
-    "TeamId",
-    "TableOrBreakoutRoom",
-    "requestTime",
-    "explanation",
-    "solved",
+    "Requester Email",
+    "Team Id",
+    "Table or Breakout Room",
+    "Request Time",
+    "Explanation",
+    "Solved",
   ];
   const expectedFields = [
     "id",
@@ -108,9 +108,10 @@ describe("HelpRequestTable tests", () => {
     expect(screen.getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent(
       "2",
     );
+
     expect(
-      screen.getByTestId(`${testId}-cell-row-1-col-solved`),
-    ).toHaveTextContent(false);
+      screen.getByTestId(`${testId}-cell-row-2-col-solved`),
+    ).toHaveTextContent("false");
 
     const editButton = screen.getByTestId(
       `${testId}-cell-row-0-col-Edit-button`,

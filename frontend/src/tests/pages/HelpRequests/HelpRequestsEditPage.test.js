@@ -89,16 +89,16 @@ describe("HelpRequestsEditPage tests", () => {
         tableOrBreakoutRoom: "table",
         requestTime: "2025-12-10T06:34:12.000",
         explanation: "need help!",
-        solved: "false",
+        solved: false,
       });
       axiosMock.onPut("/api/helprequests").reply(200, {
-        id: "17",
+        id: 17,
         requesterEmail: "bob@gmail.com",
         teamId: "ABB",
         tableOrBreakoutRoom: "table",
         requestTime: "2025-12-10T06:34:12.000",
         explanation: "need help!",
-        solved: "false",
+        solved: false,
       });
     });
 
@@ -116,14 +116,14 @@ describe("HelpRequestsEditPage tests", () => {
       await screen.findByTestId("HelpRequestForm-id");
 
       const idField = screen.getByLabelText("Id");
-      const requesterEmailField = screen.getByLabelText("RequesterEmail");
-      const teamIdField = screen.getByLabelText("TeamId");
+      const requesterEmailField = screen.getByLabelText("Requester Email");
+      const teamIdField = screen.getByLabelText("Team Id");
       const tableOrBreakoutRoomField = screen.getByLabelText(
-        "TableOrBreakoutRoom",
+        "Table or Breakout Room",
       );
-      const requestTimeField = screen.getByLabelText("requestTime");
-      const explanationField = screen.getByLabelText("explanation");
-      const solvedField = screen.getByLabelText("solved");
+      const requestTimeField = screen.getByLabelText("Request Time");
+      const explanationField = screen.getByLabelText("Explanation");
+      const solvedField = screen.getByLabelText("Solved");
 
       const submitButton = screen.getByText("Update");
 
@@ -160,7 +160,7 @@ describe("HelpRequestsEditPage tests", () => {
         target: { value: "need help!" },
       });
       fireEvent.change(solvedField, {
-        target: { value: "false" },
+        target: { value: "true" },
       });
       fireEvent.click(submitButton);
 
@@ -180,7 +180,7 @@ describe("HelpRequestsEditPage tests", () => {
           tableOrBreakoutRoom: "table",
           requestTime: "2025-12-10T06:34:12.000",
           explanation: "need help!",
-          solved: "false",
+          solved: "true",
         }),
       ); // posted object
     });

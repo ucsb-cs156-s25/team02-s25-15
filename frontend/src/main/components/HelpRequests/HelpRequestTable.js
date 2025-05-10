@@ -41,28 +41,29 @@ export default function HelpRequestTable({
     },
 
     {
-      Header: "RequesterEmail",
+      Header: "Requester Email",
       accessor: "requesterEmail",
     },
     {
-      Header: "TeamId",
+      Header: "Team Id",
       accessor: "teamId",
     },
     {
-      Header: "TableOrBreakoutRoom",
+      Header: "Table or Breakout Room",
       accessor: "tableOrBreakoutRoom",
     },
     {
-      Header: "requestTime",
+      Header: "Request Time",
       accessor: "requestTime",
     },
     {
-      Header: "explanation",
+      Header: "Explanation",
       accessor: "explanation",
     },
     {
-      Header: "solved",
-      accessor: "solved",
+      Header: "Solved",
+      id: "solved",
+      accessor: (key) => key.solved.toString(),
     },
   ];
 

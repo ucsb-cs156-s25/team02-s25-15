@@ -58,7 +58,7 @@ describe("HelpRequestsCreatePage tests", () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByLabelText("RequesterEmail")).toBeInTheDocument();
+      expect(screen.getByLabelText("Requester Email")).toBeInTheDocument();
     });
   });
 
@@ -85,27 +85,27 @@ describe("HelpRequestsCreatePage tests", () => {
     );
 
     await waitFor(() => {
-      expect(screen.getByLabelText("RequesterEmail")).toBeInTheDocument();
+      expect(screen.getByLabelText("Requester Email")).toBeInTheDocument();
     });
 
-    const requesterEmail = screen.getByLabelText("RequesterEmail");
+    const requesterEmail = screen.getByLabelText("Requester Email");
     expect(requesterEmail).toBeInTheDocument();
 
-    const teamIdInput = screen.getByLabelText("TeamId");
+    const teamIdInput = screen.getByLabelText("Team Id");
     expect(teamIdInput).toBeInTheDocument();
 
     const tableOrBreakoutRoomInput = screen.getByLabelText(
-      "TableOrBreakoutRoom",
+      "Table or Breakout Room",
     );
     expect(tableOrBreakoutRoomInput).toBeInTheDocument();
 
-    const requestTimeInput = screen.getByLabelText("requestTime");
+    const requestTimeInput = screen.getByLabelText("Request Time");
     expect(requestTimeInput).toBeInTheDocument();
 
-    const explanationInput = screen.getByLabelText("explanation");
+    const explanationInput = screen.getByLabelText("Explanation");
     expect(explanationInput).toBeInTheDocument();
 
-    const solvedInput = screen.getByLabelText("solved");
+    const solvedInput = screen.getByLabelText("Solved");
     expect(solvedInput).toBeInTheDocument();
 
     const createButton = screen.getByText("Create");
@@ -135,7 +135,7 @@ describe("HelpRequestsCreatePage tests", () => {
 
     // assert - check that the toast was called with the expected message
     expect(mockToast).toHaveBeenCalledWith(
-      "New helpRequest Created - id: 2 requesterEmail: joe@gmail.com",
+      "New HelpRequest Created - id: 2 RequesterEmail: joe@gmail.com",
     );
     expect(mockNavigate).toHaveBeenCalledWith({ to: "/helprequests" });
   });
